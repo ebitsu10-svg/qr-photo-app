@@ -11,17 +11,18 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  image     String?
-  plan      String   @default("free") // "free" | "pro"
-  stripeId  String?  @unique
-  events    Event[]
-  accounts  Account[]
-  sessions  Session[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?             // required by @auth/prisma-adapter
+  name          String?
+  image         String?
+  plan          String    @default("free") // "free" | "pro"
+  stripeId      String?   @unique
+  events        Event[]
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 
 model Account {
