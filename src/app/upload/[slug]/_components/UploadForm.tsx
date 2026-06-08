@@ -2,7 +2,7 @@
 
 import { useRef, useState, useCallback } from "react";
 
-type UploadState = "idle" | "uploading" | "done" | "error";
+type UploadState = "idle" | "resizing" | "uploading" | "done" | "error";
 
 type FileResult = {
   filename: string;
@@ -11,16 +11,58 @@ type FileResult = {
   error?: string;
 };
 
+const MAX_DIMENSION = 2048;
+const JPEG_QUALITY = 0.82;
+const MAX_FILES = 10;
+
+/** Resize an image file client-side using Canvas and return a JPEG Blob. */
+async function resizeToJpeg(file: File): Promise<{ blob: Blob; name: string }> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      let { width, height } = img;
+      if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+        const ratio = Math.min(MAX_DIMENSION / width, MAX_DIMENSION / height);
+        width = Math.round(width * ratio);
+        height = Math.round(height * ratio);
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext("2d")!.drawImage(img, 0, 0, width, height);
+      canvas.toBlob(
+        (blob) => {
+          if (blob) {
+            resolve({ blob, name: file.name.replace(/\.[^.]+$/, "") + ".jpg" });
+          } else {
+            reject(new Error(`Could not process ${file.name}`));
+          }
+        },
+        "image/jpeg",
+        JPEG_QUALITY
+      );
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      reject(new Error(`Could not load ${file.name}`));
+    };
+    img.src = objectUrl;
+  });
+}
+
 export function UploadForm({ slug, eventName }: { slug: string; eventName: string }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [state, setState] = useState<UploadState>("idle");
   const [previews, setPreviews] = useState<{ name: string; url: string }[]>([]);
   const [results, setResults] = useState<FileResult[]>([]);
   const [dragOver, setDragOver] = useState(false);
+  const [progress, setProgress] = useState("");
 
   const handleFiles = useCallback((files: FileList | null) => {
     if (!files || files.length === 0) return;
-    const items = Array.from(files).slice(0, 10);
+    const items = Array.from(files).slice(0, MAX_FILES);
     const urls = items.map((f) => ({ name: f.name, url: URL.createObjectURL(f) }));
     setPreviews(urls);
     setState("idle");
@@ -40,26 +82,51 @@ export function UploadForm({ slug, eventName }: { slug: string; eventName: strin
     const files = inputRef.current?.files;
     if (!files || files.length === 0) return;
 
-    setState("uploading");
+    const fileList = Array.from(files).slice(0, MAX_FILES);
+    setState("resizing");
     setResults([]);
+    setProgress(`Preparing ${fileList.length} photo${fileList.length !== 1 ? "s" : ""}…`);
+
+    // Resize all images client-side first
+    const resized: { blob: Blob; name: string; original: string }[] = [];
+    for (let i = 0; i < fileList.length; i++) {
+      const file = fileList[i];
+      setProgress(`Preparing ${i + 1} / ${fileList.length}…`);
+      try {
+        const { blob, name } = await resizeToJpeg(file);
+        resized.push({ blob, name, original: file.name });
+      } catch {
+        resized.push({ blob: file, name: file.name, original: file.name });
+      }
+    }
+
+    setState("uploading");
+    setProgress(`Uploading ${resized.length} photo${resized.length !== 1 ? "s" : ""}…`);
 
     const formData = new FormData();
     formData.append("slug", slug);
-    Array.from(files)
-      .slice(0, 10)
-      .forEach((f) => formData.append("files", f));
+    resized.forEach(({ blob, name }) => formData.append("files", blob, name));
 
     try {
       const res = await fetch("/api/upload", { method: "POST", body: formData });
 
-      // Safely parse JSON — server might return HTML on unexpected errors
-      let data: { results?: { filename: string; url: string }[]; errors?: { filename: string; error: string }[]; error?: string };
+      let data: {
+        results?: { filename: string; url: string }[];
+        errors?: { filename: string; error: string }[];
+        error?: string;
+      };
       try {
         data = await res.json();
       } catch {
         const text = await res.text().catch(() => "");
         setState("error");
-        setResults([{ filename: "Upload", ok: false, error: `Server error (${res.status})${text ? ": " + text.slice(0, 120) : ""}` }]);
+        setResults([
+          {
+            filename: "Upload",
+            ok: false,
+            error: `Server error (${res.status})${text ? ": " + text.slice(0, 120) : ""}`,
+          },
+        ]);
         return;
       }
 
@@ -70,36 +137,30 @@ export function UploadForm({ slug, eventName }: { slug: string; eventName: strin
       }
 
       const combined: FileResult[] = [
-        ...(data.results ?? []).map((r: { filename: string; url: string }) => ({
-          filename: r.filename,
-          ok: true,
-          url: r.url,
-        })),
-        ...(data.errors ?? []).map((e: { filename: string; error: string }) => ({
-          filename: e.filename,
-          ok: false,
-          error: e.error,
-        })),
+        ...(data.results ?? []).map((r) => ({ filename: r.filename, ok: true, url: r.url })),
+        ...(data.errors ?? []).map((e) => ({ filename: e.filename, ok: false, error: e.error })),
       ];
 
       setResults(combined);
       setState(combined.some((r) => !r.ok) ? "error" : "done");
-
-      // Clear file input
       if (inputRef.current) inputRef.current.value = "";
       setPreviews([]);
+      setProgress("");
     } catch (err) {
       setState("error");
       const msg = err instanceof Error ? err.message : "Network error. Please try again.";
       setResults([{ filename: "Upload", ok: false, error: msg }]);
+      setProgress("");
     }
   };
+
+  const isWorking = state === "resizing" || state === "uploading";
 
   return (
     <div className="space-y-5">
       {/* Drop zone */}
       <div
-        onClick={() => inputRef.current?.click()}
+        onClick={() => !isWorking && inputRef.current?.click()}
         onDrop={handleDrop}
         onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
         onDragLeave={() => setDragOver(false)}
@@ -114,7 +175,7 @@ export function UploadForm({ slug, eventName }: { slug: string; eventName: strin
           Tap to choose photos
         </p>
         <p className="mt-1 text-xs text-zinc-400">
-          or drag &amp; drop · JPEG, PNG, HEIC · up to 10 photos · 20 MB each
+          JPEG, PNG, HEIC · up to {MAX_FILES} photos
         </p>
         <input
           ref={inputRef}
@@ -143,12 +204,10 @@ export function UploadForm({ slug, eventName }: { slug: string; eventName: strin
       {previews.length > 0 && state !== "done" && (
         <button
           onClick={handleUpload}
-          disabled={state === "uploading"}
+          disabled={isWorking}
           className="w-full rounded-xl bg-black py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-black dark:hover:bg-zinc-100"
         >
-          {state === "uploading"
-            ? `Uploading ${previews.length} photo${previews.length !== 1 ? "s" : ""}…`
-            : `Upload ${previews.length} photo${previews.length !== 1 ? "s" : ""}`}
+          {isWorking ? progress : `Upload ${previews.length} photo${previews.length !== 1 ? "s" : ""}`}
         </button>
       )}
 
@@ -158,7 +217,8 @@ export function UploadForm({ slug, eventName }: { slug: string; eventName: strin
           {state === "done" && (
             <div className="rounded-xl bg-green-50 px-4 py-3 text-center dark:bg-green-950">
               <p className="text-sm font-semibold text-green-700 dark:text-green-400">
-                ✅ {results.filter((r) => r.ok).length} photo{results.filter((r) => r.ok).length !== 1 ? "s" : ""} uploaded to {eventName}!
+                ✅ {results.filter((r) => r.ok).length} photo
+                {results.filter((r) => r.ok).length !== 1 ? "s" : ""} uploaded to {eventName}!
               </p>
               <button
                 onClick={() => { setState("idle"); setResults([]); }}
