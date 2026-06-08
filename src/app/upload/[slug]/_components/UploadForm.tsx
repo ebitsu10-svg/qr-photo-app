@@ -111,7 +111,6 @@ export function UploadForm({ slug, eventName }: { slug: string; eventName: strin
           name="files"
           accept="image/*"
           multiple
-          capture="environment"
           className="hidden"
           onChange={(e) => handleFiles(e.target.files)}
         />
