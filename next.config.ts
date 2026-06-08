@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Keep native modules external so Vercel doesn't try to bundle them
+  serverExternalPackages: ["sharp", "pg"],
   images: {
     remotePatterns: [
       {

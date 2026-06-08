@@ -51,7 +51,17 @@ export function UploadForm({ slug, eventName }: { slug: string; eventName: strin
 
     try {
       const res = await fetch("/api/upload", { method: "POST", body: formData });
-      const data = await res.json();
+
+      // Safely parse JSON — server might return HTML on unexpected errors
+      let data: { results?: { filename: string; url: string }[]; errors?: { filename: string; error: string }[]; error?: string };
+      try {
+        data = await res.json();
+      } catch {
+        const text = await res.text().catch(() => "");
+        setState("error");
+        setResults([{ filename: "Upload", ok: false, error: `Server error (${res.status})${text ? ": " + text.slice(0, 120) : ""}` }]);
+        return;
+      }
 
       if (!res.ok) {
         setState("error");
@@ -78,9 +88,10 @@ export function UploadForm({ slug, eventName }: { slug: string; eventName: strin
       // Clear file input
       if (inputRef.current) inputRef.current.value = "";
       setPreviews([]);
-    } catch {
+    } catch (err) {
       setState("error");
-      setResults([{ filename: "Upload", ok: false, error: "Network error. Please try again." }]);
+      const msg = err instanceof Error ? err.message : "Network error. Please try again.";
+      setResults([{ filename: "Upload", ok: false, error: msg }]);
     }
   };
 
