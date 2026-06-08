@@ -10,7 +10,12 @@ function createPrismaClient() {
   if (!connectionString) {
     throw new Error("Missing DATABASE_URL environment variable");
   }
-  const adapter = new PrismaPg({ connectionString });
+  // ssl: rejectUnauthorized: false is required for Supabase's pooler,
+  // which presents a self-signed certificate in its chain.
+  const adapter = new PrismaPg({
+    connectionString,
+    ssl: { rejectUnauthorized: false },
+  });
   return new PrismaClient({ adapter } as any);
 }
 
