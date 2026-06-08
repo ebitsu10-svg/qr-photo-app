@@ -32,7 +32,11 @@ export async function generateQrBuffer(uploadUrl: string): Promise<Buffer> {
  * Build the public upload URL for an event slug.
  */
 export function buildUploadUrl(slug: string): string {
+  // AUTH_URL = Auth.js v5 env var (set in Vercel)
+  // NEXTAUTH_URL = legacy fallback
+  // NEXT_PUBLIC_APP_URL = optional explicit override
   const base =
+    process.env.AUTH_URL ??
     process.env.NEXTAUTH_URL ??
     process.env.NEXT_PUBLIC_APP_URL ??
     "http://localhost:3000";
