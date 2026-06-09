@@ -49,7 +49,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const event = await (db as any).event.findUnique({
       where: { slug },
       include: {
-        owner: { select: { plan: true } },
+        owner: { select: { plan: true, email: true } },
         _count: { select: { photos: true } },
       },
     });
@@ -125,6 +125,20 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         const msg = err instanceof Error ? err.message : "Upload failed.";
         errors.push({ filename: file.name, error: msg });
       }
+    }
+
+    // ── Email notification (fire-and-forget — don't block the response) ──────
+    if (results.length > 0 && event.owner?.email) {
+      const newTotal = event._count.photos + results.length;
+      void import("@/lib/email").then(({ sendNewPhotoNotification }) =>
+        sendNewPhotoNotification({
+          to: event.owner.email,
+          eventName: event.name,
+          eventSlug: slug,
+          newCount: results.length,
+          totalCount: newTotal,
+        }).catch((err) => console.error("[upload] email notification failed", err))
+      );
     }
 
     return NextResponse.json({ results, errors }, { status: 200 });
