@@ -1,14 +1,9 @@
 import { Redis } from "@upstash/redis";
 import { Ratelimit } from "@upstash/ratelimit";
 
-if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-  throw new Error("Missing Upstash Redis environment variables");
-}
-
-export const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN,
-});
+// Redis.fromEnv() auto-detects KV_REST_API_URL + KV_REST_API_TOKEN
+// (set by Vercel Marketplace) or UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN
+export const redis = Redis.fromEnv();
 
 /**
  * Rate limiter: 20 uploads per IP per 10 minutes.

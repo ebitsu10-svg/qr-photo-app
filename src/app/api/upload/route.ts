@@ -8,10 +8,10 @@ const MAX_FILES_PER_REQUEST = 10;
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
-    // ── Rate limiting (optional — skipped if Redis not configured) ──────────
+    // ── Rate limiting (active when KV / Upstash env vars are present) ──────
     if (
-      process.env.UPSTASH_REDIS_REST_URL &&
-      process.env.UPSTASH_REDIS_REST_TOKEN
+      process.env.KV_REST_API_URL ||
+      process.env.UPSTASH_REDIS_REST_URL
     ) {
       const { uploadRatelimit } = await import("@/lib/redis");
       const headerStore = await headers();
