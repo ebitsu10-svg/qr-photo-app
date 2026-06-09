@@ -1,12 +1,50 @@
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { generateSlug } from "@/lib/qr";
+import { PLAN_LIMITS } from "@/lib/stripe";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "New Event" };
 
 export default async function NewEventPage() {
+  const session = await auth();
+  if (!session?.user) redirect("/auth/signin");
+  const userId = (session.user as { id: string }).id;
+
+  const user = await (db as any).user.findUnique({
+    where: { id: userId },
+    select: { plan: true, _count: { select: { events: true } } },
+  });
+
+  const plan = (user?.plan ?? "free") as "free" | "pro";
+  const maxEvents = PLAN_LIMITS[plan].maxEvents;
+  const eventCount = user?._count?.events ?? 0;
+  const atLimit = eventCount >= maxEvents;
+
+  if (atLimit) {
+    return (
+      <div className="max-w-lg space-y-6">
+        <div>
+          <h1 className="text-2xl font-bold text-black dark:text-white">Create event</h1>
+        </div>
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 dark:border-amber-800 dark:bg-amber-950">
+          <p className="font-semibold text-amber-800 dark:text-amber-300">Free plan limit reached</p>
+          <p className="mt-1 text-sm text-amber-700 dark:text-amber-400">
+            The free plan includes 1 event. Upgrade to Pro for unlimited events and photos.
+          </p>
+          <Link
+            href="/dashboard/upgrade"
+            className="mt-4 inline-block rounded-lg bg-black px-5 py-2 text-sm font-semibold text-white hover:bg-zinc-800 dark:bg-white dark:text-black"
+          >
+            Upgrade to Pro — $9.99/mo →
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-lg space-y-6">
       <div>

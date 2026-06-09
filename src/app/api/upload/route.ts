@@ -45,10 +45,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       );
     }
 
-    // ── Validate event ───────────────────────────────────────────────────────
+    // ── Validate event + plan limits ─────────────────────────────────────────
     const event = await (db as any).event.findUnique({
       where: { slug },
-      select: { id: true, active: true, name: true },
+      include: {
+        owner: { select: { plan: true } },
+        _count: { select: { photos: true } },
+      },
     });
 
     if (!event) {
@@ -57,6 +60,17 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     if (!event.active) {
       return NextResponse.json(
         { error: "This event is no longer accepting uploads." },
+        { status: 403 }
+      );
+    }
+
+    // Free plan: max 50 photos per event
+    const { PLAN_LIMITS } = await import("@/lib/stripe");
+    const plan = (event.owner?.plan ?? "free") as "free" | "pro";
+    const maxPhotos = PLAN_LIMITS[plan].maxPhotosPerEvent;
+    if (event._count.photos >= maxPhotos) {
+      return NextResponse.json(
+        { error: `This event has reached its ${maxPhotos}-photo limit. The organizer needs to upgrade to Pro for unlimited photos.` },
         { status: 403 }
       );
     }

@@ -9,23 +9,37 @@ export default async function DashboardPage() {
   const session = await auth();
   const userId = (session!.user as { id: string }).id;
 
-  const events = await (db as any).event.findMany({
-    where: { ownerId: userId },
-    include: { _count: { select: { photos: true } } },
-    orderBy: { createdAt: "desc" },
-  });
+  const [events, user] = await Promise.all([
+    (db as any).event.findMany({
+      where: { ownerId: userId },
+      include: { _count: { select: { photos: true } } },
+      orderBy: { createdAt: "desc" },
+    }),
+    (db as any).user.findUnique({ where: { id: userId }, select: { plan: true } }),
+  ]);
+
+  const isPro = user?.plan === "pro";
 
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-4 flex-wrap">
         <div>
           <h1 className="text-2xl font-bold text-black dark:text-white">My Events</h1>
-          <p className="text-sm text-zinc-500 mt-0.5">
-            {events.length === 0
-              ? "Create your first event to get started."
-              : `${events.length} event${events.length !== 1 ? "s" : ""}`}
-          </p>
+          <div className="flex items-center gap-2 mt-0.5">
+            <p className="text-sm text-zinc-500">
+              {events.length === 0
+                ? "Create your first event to get started."
+                : `${events.length} event${events.length !== 1 ? "s" : ""}`}
+            </p>
+            {isPro ? (
+              <span className="rounded-full bg-black px-2 py-0.5 text-xs font-semibold text-white dark:bg-white dark:text-black">Pro</span>
+            ) : (
+              <Link href="/dashboard/upgrade" className="rounded-full border border-amber-400 px-2 py-0.5 text-xs font-semibold text-amber-600 hover:bg-amber-50 transition-colors dark:text-amber-400">
+                Free · Upgrade
+              </Link>
+            )}
+          </div>
         </div>
         <Link
           href="/dashboard/events/new"
