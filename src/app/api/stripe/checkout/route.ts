@@ -10,6 +10,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const body = await req.json().catch(() => ({}));
+    const interval = body?.interval === "year" ? "year" : "month";
+    const priceId =
+      interval === "year"
+        ? process.env.STRIPE_PRO_ANNUAL_PRICE_ID!
+        : process.env.STRIPE_PRO_PRICE_ID!;
+
     const userId = (session.user as { id: string }).id;
     const user = await (db as any).user.findUnique({
       where: { id: userId },
@@ -40,7 +47,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const checkoutSession = await stripe.checkout.sessions.create({
       customer: customerId,
       mode: "subscription",
-      line_items: [{ price: process.env.STRIPE_PRO_PRICE_ID!, quantity: 1 }],
+      line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${origin}/dashboard?upgraded=true`,
       cancel_url: `${origin}/dashboard/upgrade?cancelled=true`,
       metadata: { userId: user.id },

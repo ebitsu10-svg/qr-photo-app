@@ -28,7 +28,7 @@ export default function HomePage() {
         </Link>
       </div>
       <p className="text-xs text-zinc-400">
-        Free plan · 1 event · 50 photos · No credit card required
+        Free plan · 1 event · 50 photos · Photos stored for 1 year · No credit card required
       </p>
     </main>
   );
