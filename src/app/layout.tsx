@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "QR Photo Upload",
-    template: "%s | QR Photo Upload",
+    default: "PhotosEvents — QR Photo Sharing for Any Event",
+    template: "%s | PhotosEvents",
   },
   description:
-    "Let guests upload event photos by scanning a QR code — no app required.",
+    "PhotosEvents lets guests share their photos at birthdays, weddings, graduations, and any event by scanning a QR code — no app required.",
 };
 
 export default function RootLayout({
