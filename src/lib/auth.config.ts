@@ -7,8 +7,8 @@ import type { NextAuthConfig } from "next-auth";
 export const authConfig = {
   providers: [], // providers not evaluated in middleware
   pages: {
-    signIn: "/auth/signin",
-    error: "/auth/error",
+    signIn: "/en/auth/signin",
+    error: "/en/auth/error",
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {

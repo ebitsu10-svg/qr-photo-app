@@ -16,6 +16,7 @@ model User {
   emailVerified DateTime?             // required by @auth/prisma-adapter
   name          String?
   image         String?
+  password      String?   @db.Text    // bcrypt hash; null for magic-link-only accounts
   plan          String    @default("free") // "free" | "pro"
   stripeId      String?   @unique
   events        Event[]
