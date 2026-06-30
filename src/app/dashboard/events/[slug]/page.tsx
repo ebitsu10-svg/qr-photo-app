@@ -6,6 +6,7 @@ import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import DownloadButton from "./_components/DownloadButton";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -112,9 +113,12 @@ export default async function EventPage({ params }: Props) {
 
       {/* Photo gallery */}
       <div className="space-y-4">
-        <h2 className="text-lg font-semibold text-black dark:text-white">
-          Photos ({event._count.photos})
-        </h2>
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="text-lg font-semibold text-black dark:text-white">
+            Photos ({event._count.photos})
+          </h2>
+          {event.photos.length > 0 && <DownloadButton slug={slug} />}
+        </div>
 
         {event.photos.length === 0 ? (
           <div className="rounded-xl border border-dashed border-zinc-300 bg-white px-8 py-12 text-center dark:border-zinc-700 dark:bg-zinc-900">

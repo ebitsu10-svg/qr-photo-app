@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getDictionary, isLocale } from "../../../dictionaries";
 import type { Metadata } from "next";
+import DownloadButton from "@/app/dashboard/events/[slug]/_components/DownloadButton";
 
 type Params = Promise<{ lang: string; slug: string }>;
 
@@ -98,9 +99,12 @@ export default async function EventPage({ params }: { params: Params }) {
 
       {/* Photo gallery */}
       <div className="space-y-4">
-        <h2 className="text-lg font-semibold text-black dark:text-white">
-          {d.photosTitle} ({event._count.photos})
-        </h2>
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="text-lg font-semibold text-black dark:text-white">
+            {d.photosTitle} ({event._count.photos})
+          </h2>
+          {event.photos.length > 0 && <DownloadButton slug={slug} />}
+        </div>
         {event.photos.length === 0 ? (
           <div className="rounded-xl border border-dashed border-zinc-300 bg-white px-8 py-12 text-center dark:border-zinc-700 dark:bg-zinc-900">
             <span className="text-4xl">📷</span>
