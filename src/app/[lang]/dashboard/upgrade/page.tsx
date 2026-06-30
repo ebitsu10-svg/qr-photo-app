@@ -11,15 +11,13 @@ const DICT = {
     title: "Upgrade to Pro",
     subtitle: "Unlock unlimited events and photos for your account.",
     freePlanName: "Free",
-    proMonthlyName: "Pro · Monthly",
-    proMonthlyBadge: "Popular",
-    proAnnualName: "Pro · Annual",
-    proAnnualBadge: "Save 58%",
-    chooseMonthly: "Choose Monthly →",
-    chooseAnnual: "Choose Annual →",
-    redirecting: "Redirecting…",
-    stripeFooter:
-      "Secure payment via Stripe. Cancel anytime from your Stripe billing portal. Photos are automatically deleted 1 year after upload.",
+    proName: "Pro",
+    promoBadge: "Free until Jul 6",
+    promoTitle: "🎉 Limited-time offer — Pro is free until July 6",
+    promoSubtitle: "No payment required. Activate now to unlock all Pro features at no cost.",
+    activating: "Activating…",
+    getProFree: "Get Pro Free →",
+    footer: "Photos are automatically deleted 1 year after upload.",
     networkError: "Network error. Please try again.",
     proFeatures: [
       "Unlimited events",
@@ -35,20 +33,20 @@ const DICT = {
       "Photos stored for 1 year",
     ],
     freeMissing: ["Unlimited events"],
+    proPrice: "$0",
+    proWeek: " this week",
   },
   es: {
     title: "Actualizar a Pro",
     subtitle: "Desbloquea eventos y fotos ilimitados para tu cuenta.",
     freePlanName: "Gratis",
-    proMonthlyName: "Pro · Mensual",
-    proMonthlyBadge: "Popular",
-    proAnnualName: "Pro · Anual",
-    proAnnualBadge: "Ahorra 58%",
-    chooseMonthly: "Elegir mensual →",
-    chooseAnnual: "Elegir anual →",
-    redirecting: "Redirigiendo…",
-    stripeFooter:
-      "Pago seguro con Stripe. Cancela en cualquier momento desde tu portal de facturación de Stripe. Las fotos se eliminan automáticamente 1 año después de subirse.",
+    proName: "Pro",
+    promoBadge: "Gratis hasta 6 jul",
+    promoTitle: "🎉 Oferta limitada — Pro gratis hasta el 6 de julio",
+    promoSubtitle: "Sin pago requerido. Actívalo ahora y desbloquea todas las funciones Pro gratis.",
+    activating: "Activando…",
+    getProFree: "Obtener Pro gratis →",
+    footer: "Las fotos se eliminan automáticamente 1 año después de subirse.",
     networkError: "Error de red. Por favor intenta de nuevo.",
     proFeatures: [
       "Eventos ilimitados",
@@ -64,6 +62,8 @@ const DICT = {
       "Fotos guardadas 1 año",
     ],
     freeMissing: ["Eventos ilimitados"],
+    proPrice: "$0",
+    proWeek: " esta semana",
   },
 } as const;
 
@@ -74,28 +74,24 @@ export default function UpgradePage() {
   const lang = (params.lang in DICT ? params.lang : "en") as Locale;
   const d = DICT[lang];
 
-  const [loading, setLoading] = useState<"month" | "year" | null>(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleUpgrade = async (interval: "month" | "year") => {
-    setLoading(interval);
+  const handleFreeUpgrade = async () => {
+    setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ interval }),
-      });
+      const res = await fetch("/api/upgrade/free", { method: "POST" });
       const data = await res.json();
       if (!res.ok) {
         setError(data.error ?? d.networkError);
         return;
       }
-      window.location.href = data.url;
+      window.location.href = "/dashboard?upgraded=true";
     } catch {
       setError(d.networkError);
     } finally {
-      setLoading(null);
+      setLoading(false);
     }
   };
 
@@ -106,7 +102,13 @@ export default function UpgradePage() {
         <p className="mt-1 text-sm text-zinc-500">{d.subtitle}</p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      {/* Limited-time promo banner */}
+      <div className="rounded-xl border border-green-300 bg-green-50 px-5 py-4 dark:border-green-700 dark:bg-green-950">
+        <p className="text-sm font-semibold text-green-800 dark:text-green-300">{d.promoTitle}</p>
+        <p className="mt-1 text-xs text-green-700 dark:text-green-400">{d.promoSubtitle}</p>
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
         {/* Free */}
         <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
           <p className="text-sm font-semibold text-zinc-500">{d.freePlanName}</p>
@@ -117,43 +119,23 @@ export default function UpgradePage() {
           </ul>
         </div>
 
-        {/* Pro Monthly */}
+        {/* Pro */}
         <div className="flex flex-col rounded-xl border-2 border-black bg-white p-5 dark:border-white dark:bg-zinc-900">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold">{d.proMonthlyName}</p>
-            <span className="rounded-full bg-black px-2 py-0.5 text-xs font-semibold text-white dark:bg-white dark:text-black">
-              {d.proMonthlyBadge}
+            <p className="text-sm font-semibold">{d.proName}</p>
+            <span className="rounded-full bg-green-500 px-2 py-0.5 text-xs font-semibold text-white">
+              {d.promoBadge}
             </span>
           </div>
           <p className="mt-1 text-2xl font-bold text-black dark:text-white">
-            $9.99<span className="text-sm font-normal text-zinc-500">/mo</span>
+            {d.proPrice}<span className="text-sm font-normal text-zinc-500">{d.proWeek}</span>
           </p>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
             {d.proFeatures.map((f) => <li key={f}>✓ {f}</li>)}
           </ul>
-          <button onClick={() => handleUpgrade("month")} disabled={loading !== null}
+          <button onClick={handleFreeUpgrade} disabled={loading}
             className="mt-5 w-full rounded-xl bg-black py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 disabled:opacity-60 dark:bg-white dark:text-black dark:hover:bg-zinc-100">
-            {loading === "month" ? d.redirecting : d.chooseMonthly}
-          </button>
-        </div>
-
-        {/* Pro Annual */}
-        <div className="flex flex-col rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold">{d.proAnnualName}</p>
-            <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-semibold text-green-700 dark:bg-green-900 dark:text-green-400">
-              {d.proAnnualBadge}
-            </span>
-          </div>
-          <p className="mt-1 text-2xl font-bold text-black dark:text-white">
-            $50<span className="text-sm font-normal text-zinc-500">/yr</span>
-          </p>
-          <ul className="mt-4 space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-            {d.proFeatures.map((f) => <li key={f}>✓ {f}</li>)}
-          </ul>
-          <button onClick={() => handleUpgrade("year")} disabled={loading !== null}
-            className="mt-5 w-full rounded-xl border border-black py-2.5 text-sm font-semibold text-black transition-colors hover:bg-zinc-100 disabled:opacity-60 dark:border-white dark:text-white dark:hover:bg-zinc-800">
-            {loading === "year" ? d.redirecting : d.chooseAnnual}
+            {loading ? d.activating : d.getProFree}
           </button>
         </div>
       </div>
@@ -164,7 +146,7 @@ export default function UpgradePage() {
         </p>
       )}
 
-      <p className="text-center text-xs text-zinc-400">{d.stripeFooter}</p>
+      <p className="text-center text-xs text-zinc-400">{d.footer}</p>
     </div>
   );
 }
