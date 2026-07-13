@@ -30,6 +30,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Resend({
       apiKey: process.env.RESEND_API_KEY,
       from: process.env.EMAIL_FROM ?? "noreply@example.com",
+      async sendVerificationRequest({ identifier: to, url }) {
+        const callbackUrl = new URL(url).searchParams.get("callbackUrl") ?? "";
+        const locale = callbackUrl.startsWith("/es/") || callbackUrl === "/es" ? "es" : "en";
+        const { sendSignInEmail } = await import("@/lib/email");
+        await sendSignInEmail({ to, url, locale });
+      },
     }),
   ],
   // JWT strategy keeps sessions in a cookie — required for Edge middleware

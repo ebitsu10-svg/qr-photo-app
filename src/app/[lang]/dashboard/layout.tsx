@@ -1,4 +1,5 @@
 import { auth, signOut } from "@/lib/auth";
+import { db } from "@/lib/db";
 import Link from "next/link";
 import { redirect, notFound } from "next/navigation";
 import { getDictionary, isLocale } from "../dictionaries";
@@ -18,6 +19,11 @@ export default async function DashboardLayout({
 
   const session = await auth();
   if (!session?.user) redirect(`/${lang}/auth/signin`);
+
+  const userId = (session.user as typeof session.user & { id: string }).id;
+  void (db as any).user
+    .update({ where: { id: userId }, data: { locale: lang } })
+    .catch((err: unknown) => console.error("[dashboard] locale sync failed", err));
 
   const dict = await getDictionary(lang);
   const d = dict.nav;

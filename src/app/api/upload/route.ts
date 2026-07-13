@@ -49,7 +49,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const event = await (db as any).event.findUnique({
       where: { slug },
       include: {
-        owner: { select: { plan: true, email: true } },
+        owner: { select: { plan: true, email: true, locale: true } },
         _count: { select: { photos: true } },
       },
     });
@@ -133,6 +133,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       void import("@/lib/email").then(({ sendNewPhotoNotification }) =>
         sendNewPhotoNotification({
           to: event.owner.email,
+          locale: event.owner.locale === "es" ? "es" : "en",
           eventName: event.name,
           eventSlug: slug,
           newCount: results.length,
