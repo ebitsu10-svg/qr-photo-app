@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
-// Temporary free upgrade — expires 2026-07-06
-const FREE_PROMO_EXPIRES = new Date("2026-07-06T00:00:00Z");
+// Temporary free upgrade — expires 2026-07-03
+const FREE_PROMO_EXPIRES = new Date("2026-07-03T00:00:00Z");
 
 export async function POST(): Promise<NextResponse> {
   if (new Date() > FREE_PROMO_EXPIRES) {

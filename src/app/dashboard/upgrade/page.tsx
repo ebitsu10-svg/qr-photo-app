@@ -41,7 +41,7 @@ export default function UpgradePage() {
       {/* Limited-time promo banner */}
       <div className="rounded-xl border border-green-300 bg-green-50 px-5 py-4 dark:border-green-700 dark:bg-green-950">
         <p className="text-sm font-semibold text-green-800 dark:text-green-300">
-          🎉 Limited-time offer — Pro is free until July 6
+          🎉 Limited-time offer — Pro is free until July 3
         </p>
         <p className="mt-1 text-xs text-green-700 dark:text-green-400">
           No payment required. Activate now to unlock all Pro features at no cost.
@@ -68,7 +68,7 @@ export default function UpgradePage() {
           <div className="flex items-center justify-between">
             <p className="text-sm font-semibold">Pro</p>
             <span className="rounded-full bg-green-500 px-2 py-0.5 text-xs font-semibold text-white">
-              Free until Jul 6
+              Free until Jul 3
             </span>
           </div>
           <p className="mt-1 text-2xl font-bold text-black dark:text-white">
