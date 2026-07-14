@@ -23,7 +23,7 @@ const DICT = {
       "Unlimited events",
       "Unlimited photos",
       "QR code generation",
-      "Photos stored for 1 year",
+      "Photos stored forever",
       "Priority support",
     ],
     freeFeatures: [
@@ -52,7 +52,7 @@ const DICT = {
       "Eventos ilimitados",
       "Fotos ilimitadas",
       "Generación de código QR",
-      "Fotos guardadas 1 año",
+      "Fotos guardadas para siempre",
       "Soporte prioritario",
     ],
     freeFeatures: [

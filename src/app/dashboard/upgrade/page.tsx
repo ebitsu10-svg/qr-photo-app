@@ -78,7 +78,7 @@ export default function UpgradePage() {
             <li>✓ Unlimited events</li>
             <li>✓ Unlimited photos</li>
             <li>✓ QR code generation</li>
-            <li>✓ Photos stored for 1 year</li>
+            <li>✓ Photos stored forever</li>
             <li>✓ Priority support</li>
           </ul>
           <button

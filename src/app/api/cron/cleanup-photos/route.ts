@@ -19,8 +19,12 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 
   const cutoff = new Date(Date.now() - RETENTION_MS);
 
+  // Only delete photos whose event owner is NOT on the Pro plan
   const expiredPhotos = await (db as any).photo.findMany({
-    where: { uploadedAt: { lt: cutoff } },
+    where: {
+      uploadedAt: { lt: cutoff },
+      event: { owner: { plan: { not: "pro" } } },
+    },
     select: { id: true, r2Key: true },
   });
 
