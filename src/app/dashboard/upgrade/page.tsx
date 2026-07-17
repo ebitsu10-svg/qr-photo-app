@@ -76,7 +76,7 @@ export default function UpgradePage() {
           </p>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
             <li>✓ Unlimited events</li>
-            <li>✓ Unlimited photos</li>
+            <li>✓ Up to 1,000 photos</li>
             <li>✓ QR code generation</li>
             <li>✓ Photos stored forever</li>
             <li>✓ Priority support</li>

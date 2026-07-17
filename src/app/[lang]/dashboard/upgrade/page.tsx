@@ -21,7 +21,7 @@ const DICT = {
     networkError: "Network error. Please try again.",
     proFeatures: [
       "Unlimited events",
-      "Unlimited photos",
+      "Up to 1,000 photos",
       "QR code generation",
       "Photos stored forever",
       "Priority support",
@@ -50,7 +50,7 @@ const DICT = {
     networkError: "Error de red. Por favor intenta de nuevo.",
     proFeatures: [
       "Eventos ilimitados",
-      "Fotos ilimitadas",
+      "Hasta 1.000 fotos",
       "Generación de código QR",
       "Fotos guardadas para siempre",
       "Soporte prioritario",

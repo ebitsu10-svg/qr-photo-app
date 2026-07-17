@@ -29,7 +29,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         if (session.mode === "subscription" && session.metadata?.userId) {
           await (db as any).user.update({
             where: { id: session.metadata.userId },
-            data: { plan: "pro", stripeId: session.customer as string },
+            data: { plan: "pro", stripeId: session.customer as string, photoLimit: 1000 },
           });
           console.log(`[webhook] upgraded user ${session.metadata.userId} to pro`);
         }

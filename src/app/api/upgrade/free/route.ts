@@ -26,7 +26,7 @@ export async function POST(): Promise<NextResponse> {
 
   await (db as any).user.update({
     where: { id: userId },
-    data: { plan: "pro" },
+    data: { plan: "pro", photoLimit: 1000 },
   });
 
   return NextResponse.json({ success: true });

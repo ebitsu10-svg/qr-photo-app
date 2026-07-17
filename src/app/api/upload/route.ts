@@ -49,7 +49,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const event = await (db as any).event.findUnique({
       where: { slug },
       include: {
-        owner: { select: { plan: true, email: true, locale: true } },
+        owner: { select: { id: true, plan: true, photoLimit: true, email: true, locale: true } },
         _count: { select: { photos: true } },
       },
     });
@@ -64,16 +64,31 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       );
     }
 
-    // Free plan: max 50 photos per event
     const { PLAN_LIMITS } = await import("@/lib/stripe");
     const plan = (event.owner?.plan ?? "free") as "free" | "pro";
-    const maxPhotos = PLAN_LIMITS[plan].maxPhotosPerEvent;
-    if (event._count.photos >= maxPhotos) {
-      return NextResponse.json(
-        { error: `This event has reached its ${maxPhotos}-photo limit. The organizer needs to upgrade to Pro for unlimited photos.` },
-        { status: 403 }
-      );
+
+    if (plan === "free") {
+      // Free plan: max 50 photos per event
+      const maxPhotos = PLAN_LIMITS.free.maxPhotosPerEvent;
+      if (event._count.photos >= maxPhotos) {
+        return NextResponse.json(
+          { error: `This event has reached its ${maxPhotos}-photo limit. The organizer needs to upgrade to Pro.` },
+          { status: 403 }
+        );
+      }
+    } else if (event.owner?.photoLimit != null) {
+      // Pro plan with a total photo cap — count across all events
+      const totalPhotos = await (db as any).photo.count({
+        where: { event: { ownerId: event.owner.id } },
+      });
+      if (totalPhotos >= event.owner.photoLimit) {
+        return NextResponse.json(
+          { error: `This account has reached its ${event.owner.photoLimit}-photo storage limit.` },
+          { status: 403 }
+        );
+      }
     }
+    // Pro plan with photoLimit = null → unlimited, no check needed
 
     // ── Collect files ────────────────────────────────────────────────────────
     const files = formData.getAll("files") as File[];
