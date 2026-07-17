@@ -59,7 +59,9 @@
     "errorDefault": "Algo salió mal. Por favor intenta de nuevo.",
     "errorExists": "Ya existe una cuenta con ese correo. Por favor inicia sesión.",
     "errorMismatch": "Las contraseñas no coinciden.",
-    "errorShort": "La contraseña debe tener al menos 8 caracteres."
+    "errorShort": "La contraseña debe tener al menos 8 caracteres.",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "resetSuccess": "Contraseña actualizada. Ya puedes iniciar sesión con tu nueva contraseña."
   },
   "dashboard": {
     "title": "Mis Eventos",

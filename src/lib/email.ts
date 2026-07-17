@@ -132,6 +132,86 @@ export async function sendSignInEmail({
   });
 }
 
+const RESET_COPY: Record<Locale, {
+  brand: string;
+  subject: string;
+  heading: string;
+  body: string;
+  cta: string;
+  expiry: string;
+  ignore: string;
+}> = {
+  en: {
+    brand: "QR Photo Upload",
+    subject: "Reset your password",
+    heading: "Reset your password",
+    body: "Click the button below to set a new password. This link expires in 1 hour.",
+    cta: "Reset password →",
+    expiry: "This link expires in 1 hour.",
+    ignore: "If you didn't request a password reset, you can safely ignore this email.",
+  },
+  es: {
+    brand: "Subida de Fotos QR",
+    subject: "Restablece tu contraseña",
+    heading: "Restablecer contraseña",
+    body: "Haz clic en el botón para establecer una nueva contraseña. Este enlace vence en 1 hora.",
+    cta: "Restablecer contraseña →",
+    expiry: "Este enlace vence en 1 hora.",
+    ignore: "Si no solicitaste restablecer tu contraseña, puedes ignorar este correo.",
+  },
+};
+
+export async function sendPasswordResetEmail({
+  to,
+  resetUrl,
+  locale = "en",
+}: {
+  to: string;
+  resetUrl: string;
+  locale?: Locale;
+}) {
+  const t = RESET_COPY[locale];
+
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: t.subject,
+    html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;padding:40px 16px">
+    <tr><td align="center">
+      <table width="100%" style="max-width:520px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e4e4e7">
+        <tr>
+          <td style="background:#000000;padding:24px 32px">
+            <p style="margin:0;color:#ffffff;font-size:18px;font-weight:700">📸 ${t.brand}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:32px">
+            <h1 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#09090b">${t.heading}</h1>
+            <p style="margin:0 0 24px;color:#52525b;font-size:15px">${t.body}</p>
+            <a href="${resetUrl}"
+               style="display:inline-block;background:#000000;color:#ffffff;text-decoration:none;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600">
+              ${t.cta}
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 32px;border-top:1px solid #f4f4f5">
+            <p style="margin:0;color:#a1a1aa;font-size:12px">${t.expiry} ${t.ignore}</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`,
+  });
+}
+
 /**
  * Notify the event organizer that new photos were uploaded.
  * Called once per upload batch — not per individual photo.

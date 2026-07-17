@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default async function SignInPage({
   searchParams,
 }: {
-  searchParams: Promise<{ callbackUrl?: string; error?: string; mode?: string }>;
+  searchParams: Promise<{ callbackUrl?: string; error?: string; mode?: string; reset?: string }>;
 }) {
   const session = await auth();
   const params = await searchParams;
@@ -30,6 +30,7 @@ export default async function SignInPage({
   }
 
   const errMsg = errorMessage(params.error);
+  const resetSuccess = params.reset === "1";
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center px-4 bg-white dark:bg-black">
@@ -42,7 +43,12 @@ export default async function SignInPage({
           </h1>
         </div>
 
-        {/* Error */}
+        {/* Success / Error */}
+        {resetSuccess && (
+          <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400">
+            Password updated. You can now sign in with your new password.
+          </div>
+        )}
         {errMsg && (
           <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
             {errMsg}
@@ -149,6 +155,14 @@ export default async function SignInPage({
                   placeholder="••••••••"
                   className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm placeholder-zinc-400 focus:border-black focus:outline-none focus:ring-1 focus:ring-black dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-white dark:focus:ring-white"
                 />
+              </div>
+              <div className="flex justify-end">
+                <Link
+                  href="/auth/forgot-password"
+                  className="text-xs text-zinc-400 underline underline-offset-2 hover:text-zinc-600 dark:hover:text-zinc-300"
+                >
+                  Forgot password?
+                </Link>
               </div>
               <button
                 type="submit"

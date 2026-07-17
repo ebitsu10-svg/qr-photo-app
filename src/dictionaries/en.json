@@ -59,7 +59,9 @@
     "errorDefault": "Something went wrong. Please try again.",
     "errorExists": "An account with that email already exists. Please sign in.",
     "errorMismatch": "Passwords do not match.",
-    "errorShort": "Password must be at least 8 characters."
+    "errorShort": "Password must be at least 8 characters.",
+    "forgotPassword": "Forgot password?",
+    "resetSuccess": "Password updated. You can now sign in with your new password."
   },
   "dashboard": {
     "title": "My Events",

@@ -5,7 +5,7 @@ import { getDictionary, isLocale } from "../../dictionaries";
 import type { Metadata } from "next";
 
 type Params = Promise<{ lang: string }>;
-type SearchParams = Promise<{ callbackUrl?: string; error?: string; mode?: string }>;
+type SearchParams = Promise<{ callbackUrl?: string; error?: string; mode?: string; reset?: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { lang } = await params;
@@ -38,6 +38,7 @@ export default async function SignInPage({
     return d.errorDefault;
   }
   const errMsg = errorMessage(sp.error);
+  const resetSuccess = sp.reset === "1";
 
   const callbackQuery = sp.callbackUrl
     ? `?callbackUrl=${encodeURIComponent(sp.callbackUrl)}`
@@ -53,6 +54,11 @@ export default async function SignInPage({
           </h1>
         </div>
 
+        {resetSuccess && (
+          <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400">
+            {d.resetSuccess}
+          </div>
+        )}
         {errMsg && (
           <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
             {errMsg}
@@ -123,6 +129,12 @@ export default async function SignInPage({
                   placeholder={d.passwordPlaceholder}
                   className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm placeholder-zinc-400 focus:border-black focus:outline-none focus:ring-1 focus:ring-black dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-white dark:focus:ring-white"
                 />
+              </div>
+              <div className="flex justify-end">
+                <Link href={`/${lang}/auth/forgot-password`}
+                  className="text-xs text-zinc-400 underline underline-offset-2 hover:text-zinc-600 dark:hover:text-zinc-300">
+                  {d.forgotPassword}
+                </Link>
               </div>
               <button type="submit"
                 className="w-full rounded-lg bg-black px-4 py-2.5 text-sm font-semibold text-white hover:bg-zinc-800 transition-colors dark:bg-white dark:text-black dark:hover:bg-zinc-100">
