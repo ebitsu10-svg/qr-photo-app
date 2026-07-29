@@ -103,6 +103,27 @@ export default async function HomePage({
           </Link>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t border-zinc-100 px-4 py-8 dark:border-zinc-900">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-3 text-sm text-zinc-500 sm:flex-row sm:justify-between">
+          <p>{d.footerCopyright}</p>
+          <div className="flex items-center gap-4">
+            <Link href={`/${lang}/terms`} className="hover:text-black dark:hover:text-white transition-colors">
+              {d.footerTerms}
+            </Link>
+            <Link href={`/${lang}/privacy`} className="hover:text-black dark:hover:text-white transition-colors">
+              {d.footerPrivacy}
+            </Link>
+            <a
+              href={`mailto:${d.footerContact}`}
+              className="hover:text-black dark:hover:text-white transition-colors"
+            >
+              {d.footerContact}
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

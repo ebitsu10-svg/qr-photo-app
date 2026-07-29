@@ -58,7 +58,11 @@
     ],
     "pricingTitle": "Simple pricing",
     "pricingSubtitle": "Start free for your first event. Upgrade to Pro for unlimited events, unlimited photos, and a full year of photo storage — from $50/year.",
-    "pricingCta": "Get started free"
+    "pricingCta": "Get started free",
+    "footerCopyright": "© 2026 PhotosEvents. All rights reserved.",
+    "footerTerms": "Terms & Conditions",
+    "footerPrivacy": "Privacy Policy",
+    "footerContact": "support@photosevents.com"
   },
   "nav": {
     "brand": "QR Photo Upload",

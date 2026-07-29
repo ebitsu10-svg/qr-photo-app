@@ -58,7 +58,11 @@
     ],
     "pricingTitle": "Precios simples",
     "pricingSubtitle": "Empieza gratis con tu primer evento. Cambia a Pro para eventos y fotos ilimitados, y un año de almacenamiento — desde $50/año.",
-    "pricingCta": "Comenzar gratis"
+    "pricingCta": "Comenzar gratis",
+    "footerCopyright": "© 2026 PhotosEvents. Todos los derechos reservados.",
+    "footerTerms": "Términos y condiciones",
+    "footerPrivacy": "Política de privacidad",
+    "footerContact": "support@photosevents.com"
   },
   "nav": {
     "brand": "QR Subida de Fotos",

@@ -131,6 +131,27 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t border-zinc-100 px-4 py-8 dark:border-zinc-900">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-3 text-sm text-zinc-500 sm:flex-row sm:justify-between">
+          <p>© 2026 PhotosEvents. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <Link href="/terms" className="hover:text-black dark:hover:text-white transition-colors">
+              Terms & Conditions
+            </Link>
+            <Link href="/privacy" className="hover:text-black dark:hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <a
+              href="mailto:support@photosevents.com"
+              className="hover:text-black dark:hover:text-white transition-colors"
+            >
+              support@photosevents.com
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
