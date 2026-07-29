@@ -117,6 +117,17 @@ export default async function SignUpPage({
           </button>
         </form>
 
+        <p className="text-center text-xs text-zinc-400">
+          {d.agreeToTermsPrefix}{" "}
+          <Link
+            href={`/${lang}/terms`}
+            className="underline underline-offset-2 hover:text-zinc-600 dark:hover:text-zinc-300"
+          >
+            {d.agreeToTermsLink}
+          </Link>
+          .
+        </p>
+
         <p className="text-center text-sm text-zinc-500">
           {d.alreadyHaveAccount}{" "}
           <Link

@@ -143,6 +143,17 @@ export default async function SignUpPage({
           </button>
         </form>
 
+        <p className="text-center text-xs text-zinc-400">
+          By creating an account, you agree to our{" "}
+          <Link
+            href="/terms"
+            className="underline underline-offset-2 hover:text-zinc-600 dark:hover:text-zinc-300"
+          >
+            Terms & Conditions
+          </Link>
+          .
+        </p>
+
         <p className="text-center text-sm text-zinc-500">
           Already have an account?{" "}
           <Link

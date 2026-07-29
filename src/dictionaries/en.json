@@ -8,20 +8,53 @@
     "useCasesTitle": "Built for any event",
     "useCasesSubtitle": "If people are taking photos, PhotosEvents helps you collect them all in one place.",
     "eventTypes": [
-      { "emoji": "🎂", "label": "Birthday parties" },
-      { "emoji": "💍", "label": "Weddings" },
-      { "emoji": "🎓", "label": "Graduations" },
-      { "emoji": "👶", "label": "Baby showers" },
-      { "emoji": "🏢", "label": "Corporate events" },
-      { "emoji": "🎉", "label": "Reunions" },
-      { "emoji": "🎄", "label": "Holiday parties" },
-      { "emoji": "✨", "label": "Any celebration" }
+      {
+        "emoji": "🎂",
+        "label": "Birthday parties"
+      },
+      {
+        "emoji": "💍",
+        "label": "Weddings"
+      },
+      {
+        "emoji": "🎓",
+        "label": "Graduations"
+      },
+      {
+        "emoji": "👶",
+        "label": "Baby showers"
+      },
+      {
+        "emoji": "🏢",
+        "label": "Corporate events"
+      },
+      {
+        "emoji": "🎉",
+        "label": "Reunions"
+      },
+      {
+        "emoji": "🎄",
+        "label": "Holiday parties"
+      },
+      {
+        "emoji": "✨",
+        "label": "Any celebration"
+      }
     ],
     "howItWorksTitle": "How it works",
     "steps": [
-      { "title": "Create your event", "body": "Give it a name and we'll generate a unique link and QR code instantly." },
-      { "title": "Print or share the QR code", "body": "Put it on tables, invitations, or a screen — guests just scan with their phone camera." },
-      { "title": "Watch photos roll in", "body": "Guests upload straight from their phone, no app or account needed. You see everything in your dashboard." }
+      {
+        "title": "Create your event",
+        "body": "Give it a name and we'll generate a unique link and QR code instantly."
+      },
+      {
+        "title": "Print or share the QR code",
+        "body": "Put it on tables, invitations, or a screen — guests just scan with their phone camera."
+      },
+      {
+        "title": "Watch photos roll in",
+        "body": "Guests upload straight from their phone, no app or account needed. You see everything in your dashboard."
+      }
     ],
     "pricingTitle": "Simple pricing",
     "pricingSubtitle": "Start free for your first event. Upgrade to Pro for unlimited events, unlimited photos, and a full year of photo storage — from $50/year.",
@@ -61,7 +94,9 @@
     "errorMismatch": "Passwords do not match.",
     "errorShort": "Password must be at least 8 characters.",
     "forgotPassword": "Forgot password?",
-    "resetSuccess": "Password updated. You can now sign in with your new password."
+    "resetSuccess": "Password updated. You can now sign in with your new password.",
+    "agreeToTermsPrefix": "By creating an account, you agree to our",
+    "agreeToTermsLink": "Terms & Conditions"
   },
   "dashboard": {
     "title": "My Events",
@@ -106,9 +141,22 @@
     "redirecting": "Redirecting…",
     "stripeFooter": "Secure payment via Stripe. Cancel anytime from your Stripe billing portal. Photos are automatically deleted 1 year after upload.",
     "networkError": "Network error. Please try again.",
-    "proFeatures": ["Unlimited events", "Unlimited photos", "QR code generation", "Photos stored for 1 year", "Priority support"],
-    "freeFeatures": ["1 event", "50 photos per event", "QR code generation", "Photos stored for 1 year"],
-    "freeMissing": ["Unlimited events"]
+    "proFeatures": [
+      "Unlimited events",
+      "Unlimited photos",
+      "QR code generation",
+      "Photos stored for 1 year",
+      "Priority support"
+    ],
+    "freeFeatures": [
+      "1 event",
+      "50 photos per event",
+      "QR code generation",
+      "Photos stored for 1 year"
+    ],
+    "freeMissing": [
+      "Unlimited events"
+    ]
   },
   "upload": {
     "uploadDesc": "Upload your photos from the event — no account needed.",
@@ -126,5 +174,263 @@
     "uploading": "Uploading",
     "successSingular": "photo uploaded to",
     "successPlural": "photos uploaded to"
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "lastUpdated": "Last updated: July 28, 2026",
+    "backHome": "← Back to home",
+    "intro": "These Terms and Conditions (\"Terms\") govern your access to and use of PhotosEvents (\"PhotosEvents,\" \"we,\" \"us,\" or \"our\"), including our website, QR code event pages, and guest photo upload tools (collectively, the \"Service\"). By creating an account, creating an event, or uploading a photo through the Service, you agree to be bound by these Terms. If you do not agree, do not use the Service.",
+    "sections": [
+      {
+        "heading": "1. The Service",
+        "paragraphs": [
+          "PhotosEvents lets an event organizer (\"Organizer\") create an event and receive a unique link and QR code. Guests can scan the code and upload photos directly from their phone without creating an account. Organizers can view, download, and manage uploaded photos from their dashboard."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "2. Accounts",
+        "paragraphs": [
+          "You must provide accurate information when creating an Organizer account and are responsible for keeping your login credentials confidential. You are responsible for all activity that occurs under your account. Notify us immediately if you believe your account has been accessed without authorization.",
+          "You must be at least 18 years old, or the age of legal majority in your jurisdiction, to create an Organizer account."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "3. Guest Uploads & Content",
+        "paragraphs": [
+          "Guests may upload photos to an event without creating an account. By uploading a photo, a guest represents that they own the photo or otherwise have the right to share it, and that the photo does not violate any third party's rights (including privacy and intellectual property rights) or any applicable law.",
+          "Organizers are responsible for informing their guests about how uploaded photos will be used, stored, and shared, and for obtaining any consents required under applicable law before collecting photos of guests."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "4. Content License and Ownership",
+        "paragraphs": [
+          "You retain ownership of any photos you upload. By uploading a photo, you grant PhotosEvents a worldwide, non-exclusive, royalty-free license to host, store, reproduce, and display that photo solely to operate and provide the Service to the Organizer and guests of the relevant event.",
+          "We do not claim ownership of your photos and do not use them for advertising or sell them to third parties."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "5. Acceptable Use",
+        "paragraphs": [
+          "You agree not to upload or share content through the Service that:"
+        ],
+        "list": [
+          "Is illegal, harassing, defamatory, obscene, or sexually explicit",
+          "Infringes another person's intellectual property, privacy, or publicity rights",
+          "Contains malware or any code intended to disrupt the Service",
+          "Impersonates another person or misrepresents your affiliation with any person or entity"
+        ],
+        "afterList": [
+          "We may remove content or suspend access for violations of this section."
+        ]
+      },
+      {
+        "heading": "6. Plans, Pricing & Payment",
+        "paragraphs": [
+          "PhotosEvents offers a Free plan (currently 1 event, up to 50 photos per event, and 1 year of photo storage) and a Pro plan (currently unlimited events, up to 1,000 photos per event, and photos stored indefinitely while your Pro subscription or promotional access remains active). Plan limits and features are described on our pricing and upgrade pages and may change over time.",
+          "Paid subscriptions are billed through Stripe. By subscribing, you authorize us to charge your chosen payment method on a recurring basis until you cancel. You can cancel at any time through your Stripe billing portal; cancellation takes effect at the end of the current billing period.",
+          "Promotional pricing (including any free-trial or limited-time offer) is subject to the terms stated at the time of the offer and may be changed or discontinued for future signups."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "7. Photo Storage & Retention",
+        "paragraphs": [
+          "Photos uploaded to a Free plan event are automatically and permanently deleted approximately 1 year after upload. Photos belonging to an Organizer on the Pro plan are retained for as long as the Pro plan remains active. If a Pro account is downgraded or canceled, standard Free plan retention rules apply going forward.",
+          "We are not responsible for photos lost due to expiration of the retention period, account cancellation, or an Organizer's failure to download photos before deletion. We recommend downloading your event's photos before they are removed."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "8. Termination",
+        "paragraphs": [
+          "You may stop using the Service or delete your account at any time. We may suspend or terminate your access to the Service, with or without notice, if you violate these Terms, misuse the Service, or if we discontinue the Service.",
+          "Upon termination, your right to use the Service ends immediately. Sections of these Terms that by their nature should survive termination (including ownership, disclaimers, and limitation of liability) will survive."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "9. Disclaimers",
+        "paragraphs": [
+          "The Service is provided \"as is\" and \"as available\" without warranties of any kind, whether express or implied, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not guarantee that the Service will be uninterrupted, secure, or error-free, or that uploaded photos will never be lost, corrupted, or delayed."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "10. Limitation of Liability",
+        "paragraphs": [
+          "To the maximum extent permitted by law, PhotosEvents will not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, photos, revenue, or profits, arising from your use of the Service. Our total liability for any claim relating to the Service will not exceed the amount you paid us, if any, in the 12 months before the claim arose."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "11. Privacy",
+        "paragraphs": [
+          "Our Privacy Policy explains how we collect, use, and protect information, including photos and account data, and forms part of these Terms."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "12. Changes to These Terms",
+        "paragraphs": [
+          "We may update these Terms from time to time. If we make material changes, we will update the \"Last updated\" date above and, where appropriate, provide additional notice. Continuing to use the Service after changes take effect means you accept the updated Terms."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "13. Governing Law",
+        "paragraphs": [
+          "These Terms are governed by the laws of the State of Arizona, USA, without regard to its conflict of law principles, unless otherwise required by applicable law."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "14. Contact Us",
+        "paragraphs": [
+          "Questions about these Terms? Contact us at support@photosevents.com."
+        ],
+        "list": [],
+        "afterList": []
+      }
+    ],
+    "viewOther": "View our Privacy Policy",
+    "viewOtherHref": "privacy"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: July 28, 2026",
+    "backHome": "← Back to home",
+    "intro": "This Privacy Policy explains how PhotosEvents (\"PhotosEvents,\" \"we,\" \"us,\" or \"our\") collects, uses, shares, and protects information when you use our website, create an event, or upload a photo through our QR code upload tools (collectively, the \"Service\"). By using the Service, you agree to the practices described in this Privacy Policy and in our Terms & Conditions.",
+    "sections": [
+      {
+        "heading": "1. Information We Collect",
+        "paragraphs": ["We collect the following categories of information:"],
+        "list": [
+          "Account information: email address, password (stored as a secure hash, never in plain text), display name and profile image if provided, and your preferred language",
+          "Event information: event names, unique links/QR codes, and scan counts",
+          "Uploaded photos: image files, original filenames, file size, file type, and upload timestamp — from both event Organizers and their guests",
+          "Payment information: when you subscribe to a paid plan, payment is processed by Stripe. We receive a Stripe customer ID and subscription status, but we never receive or store your full card number",
+          "Technical information: your IP address and basic request metadata, used briefly to enforce rate limits and prevent abuse",
+          "Cookies: a session cookie is used to keep you signed in to your Organizer account"
+        ],
+        "afterList": []
+      },
+      {
+        "heading": "2. How We Use Information",
+        "paragraphs": ["We use the information we collect to:"],
+        "list": [
+          "Provide, operate, and maintain the Service (for example, generating QR codes, storing and displaying photos, and sending upload notification emails)",
+          "Process payments and manage subscriptions through Stripe",
+          "Communicate with you about your account, events, or transactional matters",
+          "Detect, prevent, and address fraud, abuse, or security issues",
+          "Comply with legal obligations"
+        ],
+        "afterList": ["We do not sell your personal information or your photos, and we do not use your photos for advertising."]
+      },
+      {
+        "heading": "3. Guest Uploads and Photos of Others",
+        "paragraphs": [
+          "Guests can upload photos to an event without creating an account, which means photos may depict people who never interacted with PhotosEvents directly. Event Organizers are responsible for telling their guests how photos will be collected and used, and for obtaining any consent required under applicable law — for example, before sharing an event QR code at a gathering that may include photos of children.",
+          "If you appear in a photo uploaded to an event and want it removed, contact the event Organizer directly, or contact us at support@photosevents.com and we will assist where we are able to."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "4. How We Share Information",
+        "paragraphs": ["We share information with the service providers who help us run PhotosEvents, including:"],
+        "list": [
+          "Stripe — payment processing and subscription billing",
+          "Cloudflare R2 — storage of uploaded photos",
+          "Resend — sending transactional emails (upload notifications, password resets, magic links)",
+          "Upstash — temporary rate-limiting data used to prevent abuse",
+          "Vercel — application hosting"
+        ],
+        "afterList": ["These providers are only permitted to use your information to perform services on our behalf. We do not sell your information to third parties or share it for third-party advertising."]
+      },
+      {
+        "heading": "5. Data Retention",
+        "paragraphs": [
+          "Photos uploaded to a Free plan event are automatically and permanently deleted approximately 1 year after upload. Photos belonging to a Pro plan Organizer are retained while the Pro plan remains active; if the account is downgraded or canceled, standard Free plan retention timelines apply going forward.",
+          "Account information is retained for as long as your account is active. You can request deletion of your account and associated data at any time by contacting us."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "6. Data Security",
+        "paragraphs": [
+          "We use reasonable administrative, technical, and physical safeguards to protect your information, including hashed passwords and access-controlled cloud storage. No method of transmission or storage is 100% secure, and we cannot guarantee absolute security."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "7. Your Rights and Choices",
+        "paragraphs": [
+          "Depending on where you live, you may have rights to access, correct, delete, or receive a copy of the personal information we hold about you, and to object to or restrict certain processing. To exercise these rights, contact us at support@photosevents.com. We will respond within a reasonable time and may need to verify your identity before fulfilling your request.",
+          "Organizers can delete an event and its photos at any time from their dashboard."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "8. Children's Privacy",
+        "paragraphs": [
+          "The Service is not directed to children, and we do not knowingly collect account information from anyone under 18. Because guests can upload photos without an account — including at events like birthday parties or baby showers — photos of children may be uploaded by a parent, guardian, or other adult guest. It is the event Organizer's responsibility to ensure appropriate consent is obtained before collecting photos of minors. If you believe a child's photo was uploaded without appropriate consent, contact us at support@photosevents.com and we will work with the Organizer to remove it."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "9. Cookies",
+        "paragraphs": [
+          "We use a small number of essential cookies, primarily to keep you signed in to your Organizer account. We do not use third-party advertising or analytics cookies."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "10. International Users",
+        "paragraphs": [
+          "Our Service is hosted in the United States, and information you provide — including photos — may be processed and stored in the United States. By using the Service, you consent to this transfer and processing."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "11. Changes to This Policy",
+        "paragraphs": [
+          "We may update this Privacy Policy from time to time. If we make material changes, we will update the \"Last updated\" date above. Continuing to use the Service after changes take effect means you accept the updated policy."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "12. Contact Us",
+        "paragraphs": [
+          "Questions about this Privacy Policy or your information? Contact us at support@photosevents.com."
+        ],
+        "list": [],
+        "afterList": []
+      }
+    ],
+    "viewOther": "View our Terms & Conditions",
+    "viewOtherHref": "terms"
   }
 }

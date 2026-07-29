@@ -8,20 +8,53 @@
     "useCasesTitle": "Para cualquier tipo de evento",
     "useCasesSubtitle": "Si la gente está tomando fotos, PhotosEvents te ayuda a reunirlas todas en un solo lugar.",
     "eventTypes": [
-      { "emoji": "🎂", "label": "Fiestas de cumpleaños" },
-      { "emoji": "💍", "label": "Bodas" },
-      { "emoji": "🎓", "label": "Graduaciones" },
-      { "emoji": "👶", "label": "Baby showers" },
-      { "emoji": "🏢", "label": "Eventos corporativos" },
-      { "emoji": "🎉", "label": "Reuniones" },
-      { "emoji": "🎄", "label": "Fiestas de temporada" },
-      { "emoji": "✨", "label": "Cualquier celebración" }
+      {
+        "emoji": "🎂",
+        "label": "Fiestas de cumpleaños"
+      },
+      {
+        "emoji": "💍",
+        "label": "Bodas"
+      },
+      {
+        "emoji": "🎓",
+        "label": "Graduaciones"
+      },
+      {
+        "emoji": "👶",
+        "label": "Baby showers"
+      },
+      {
+        "emoji": "🏢",
+        "label": "Eventos corporativos"
+      },
+      {
+        "emoji": "🎉",
+        "label": "Reuniones"
+      },
+      {
+        "emoji": "🎄",
+        "label": "Fiestas de temporada"
+      },
+      {
+        "emoji": "✨",
+        "label": "Cualquier celebración"
+      }
     ],
     "howItWorksTitle": "¿Cómo funciona?",
     "steps": [
-      { "title": "Crea tu evento", "body": "Dale un nombre y generaremos un enlace único y un código QR al instante." },
-      { "title": "Imprime o comparte el código QR", "body": "Ponlo en las mesas, invitaciones o una pantalla — los invitados solo escanean con su celular." },
-      { "title": "Mira cómo llegan las fotos", "body": "Los invitados suben directo desde su celular, sin app ni cuenta. Tú lo ves todo en tu panel." }
+      {
+        "title": "Crea tu evento",
+        "body": "Dale un nombre y generaremos un enlace único y un código QR al instante."
+      },
+      {
+        "title": "Imprime o comparte el código QR",
+        "body": "Ponlo en las mesas, invitaciones o una pantalla — los invitados solo escanean con su celular."
+      },
+      {
+        "title": "Mira cómo llegan las fotos",
+        "body": "Los invitados suben directo desde su celular, sin app ni cuenta. Tú lo ves todo en tu panel."
+      }
     ],
     "pricingTitle": "Precios simples",
     "pricingSubtitle": "Empieza gratis con tu primer evento. Cambia a Pro para eventos y fotos ilimitados, y un año de almacenamiento — desde $50/año.",
@@ -61,7 +94,9 @@
     "errorMismatch": "Las contraseñas no coinciden.",
     "errorShort": "La contraseña debe tener al menos 8 caracteres.",
     "forgotPassword": "¿Olvidaste tu contraseña?",
-    "resetSuccess": "Contraseña actualizada. Ya puedes iniciar sesión con tu nueva contraseña."
+    "resetSuccess": "Contraseña actualizada. Ya puedes iniciar sesión con tu nueva contraseña.",
+    "agreeToTermsPrefix": "Al crear una cuenta, aceptas nuestros",
+    "agreeToTermsLink": "Términos y condiciones"
   },
   "dashboard": {
     "title": "Mis Eventos",
@@ -106,9 +141,22 @@
     "redirecting": "Redirigiendo…",
     "stripeFooter": "Pago seguro con Stripe. Cancela en cualquier momento desde tu portal de facturación de Stripe. Las fotos se eliminan automáticamente 1 año después de subirse.",
     "networkError": "Error de red. Por favor intenta de nuevo.",
-    "proFeatures": ["Eventos ilimitados", "Fotos ilimitadas", "Generación de código QR", "Fotos guardadas 1 año", "Soporte prioritario"],
-    "freeFeatures": ["1 evento", "50 fotos por evento", "Generación de código QR", "Fotos guardadas 1 año"],
-    "freeMissing": ["Eventos ilimitados"]
+    "proFeatures": [
+      "Eventos ilimitados",
+      "Fotos ilimitadas",
+      "Generación de código QR",
+      "Fotos guardadas 1 año",
+      "Soporte prioritario"
+    ],
+    "freeFeatures": [
+      "1 evento",
+      "50 fotos por evento",
+      "Generación de código QR",
+      "Fotos guardadas 1 año"
+    ],
+    "freeMissing": [
+      "Eventos ilimitados"
+    ]
   },
   "upload": {
     "uploadDesc": "Sube tus fotos del evento — no necesitas cuenta.",
@@ -126,5 +174,263 @@
     "uploading": "Subiendo",
     "successSingular": "foto subida a",
     "successPlural": "fotos subidas a"
+  },
+  "terms": {
+    "title": "Términos y condiciones",
+    "lastUpdated": "Última actualización: 28 de julio de 2026",
+    "backHome": "← Volver al inicio",
+    "intro": "Estos Términos y condiciones (\"Términos\") rigen tu acceso y uso de PhotosEvents (\"PhotosEvents\", \"nosotros\" o \"nuestro\"), incluyendo nuestro sitio web, las páginas de eventos con código QR y las herramientas de subida de fotos para invitados (en conjunto, el \"Servicio\"). Al crear una cuenta, crear un evento o subir una foto a través del Servicio, aceptas quedar sujeto a estos Términos. Si no estás de acuerdo, no uses el Servicio.",
+    "sections": [
+      {
+        "heading": "1. El Servicio",
+        "paragraphs": [
+          "PhotosEvents permite que un organizador de eventos (\"Organizador\") cree un evento y reciba un enlace único y un código QR. Los invitados pueden escanear el código y subir fotos directamente desde su celular sin crear una cuenta. Los organizadores pueden ver, descargar y administrar las fotos subidas desde su panel."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "2. Cuentas",
+        "paragraphs": [
+          "Debes proporcionar información precisa al crear una cuenta de Organizador y eres responsable de mantener la confidencialidad de tus credenciales de acceso. Eres responsable de toda la actividad que ocurra bajo tu cuenta. Notifícanos de inmediato si crees que tu cuenta ha sido accedida sin autorización.",
+          "Debes tener al menos 18 años, o la mayoría de edad legal en tu jurisdicción, para crear una cuenta de Organizador."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "3. Subidas e invitados",
+        "paragraphs": [
+          "Los invitados pueden subir fotos a un evento sin crear una cuenta. Al subir una foto, el invitado declara que es dueño de la foto o que tiene el derecho de compartirla, y que la foto no viola los derechos de terceros (incluyendo derechos de privacidad y propiedad intelectual) ni ninguna ley aplicable.",
+          "Los organizadores son responsables de informar a sus invitados sobre cómo se usarán, almacenarán y compartirán las fotos subidas, y de obtener los consentimientos requeridos por la ley aplicable antes de recolectar fotos de sus invitados."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "4. Licencia y propiedad del contenido",
+        "paragraphs": [
+          "Conservas la propiedad de las fotos que subas. Al subir una foto, otorgas a PhotosEvents una licencia mundial, no exclusiva y libre de regalías para alojar, almacenar, reproducir y mostrar esa foto únicamente para operar y prestar el Servicio al Organizador y a los invitados del evento correspondiente.",
+          "No reclamamos la propiedad de tus fotos ni las usamos con fines publicitarios ni las vendemos a terceros."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "5. Uso aceptable",
+        "paragraphs": [
+          "Aceptas no subir ni compartir a través del Servicio contenido que:"
+        ],
+        "list": [
+          "Sea ilegal, acosador, difamatorio, obsceno o sexualmente explícito",
+          "Infrinja los derechos de propiedad intelectual, privacidad o imagen de otra persona",
+          "Contenga malware o cualquier código destinado a interrumpir el Servicio",
+          "Suplante a otra persona o tergiverse tu relación con alguna persona o entidad"
+        ],
+        "afterList": [
+          "Podemos eliminar contenido o suspender el acceso ante infracciones de esta sección."
+        ]
+      },
+      {
+        "heading": "6. Planes, precios y pago",
+        "paragraphs": [
+          "PhotosEvents ofrece un plan Gratis (actualmente 1 evento, hasta 50 fotos por evento y 1 año de almacenamiento de fotos) y un plan Pro (actualmente eventos ilimitados, hasta 1.000 fotos por evento y almacenamiento indefinido mientras tu suscripción Pro o acceso promocional permanezca activo). Los límites y funciones de cada plan se describen en nuestras páginas de precios y actualización, y pueden cambiar con el tiempo.",
+          "Las suscripciones pagas se facturan a través de Stripe. Al suscribirte, nos autorizas a cobrar tu método de pago de forma recurrente hasta que canceles. Puedes cancelar en cualquier momento desde tu portal de facturación de Stripe; la cancelación entra en vigor al final del período de facturación en curso.",
+          "Los precios promocionales (incluida cualquier prueba gratuita u oferta por tiempo limitado) están sujetos a los términos indicados al momento de la oferta y pueden modificarse o descontinuarse para futuros registros."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "7. Almacenamiento y retención de fotos",
+        "paragraphs": [
+          "Las fotos subidas a un evento del plan Gratis se eliminan automática y permanentemente aproximadamente 1 año después de subirse. Las fotos de un Organizador en el plan Pro se conservan mientras el plan Pro permanezca activo. Si una cuenta Pro se degrada o cancela, se aplican en adelante las reglas de retención del plan Gratis.",
+          "No somos responsables de las fotos que se pierdan por el vencimiento del período de retención, la cancelación de la cuenta o la falta de descarga de las fotos por parte del Organizador antes de su eliminación. Te recomendamos descargar las fotos de tu evento antes de que sean eliminadas."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "8. Terminación",
+        "paragraphs": [
+          "Puedes dejar de usar el Servicio o eliminar tu cuenta en cualquier momento. Podemos suspender o cancelar tu acceso al Servicio, con o sin previo aviso, si infringes estos Términos, haces un uso indebido del Servicio o si discontinuamos el Servicio.",
+          "Al terminar, tu derecho a usar el Servicio finaliza de inmediato. Las secciones de estos Términos que por su naturaleza deban subsistir a la terminación (incluyendo propiedad, exenciones de responsabilidad y limitación de responsabilidad) subsistirán."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "9. Exenciones de responsabilidad",
+        "paragraphs": [
+          "El Servicio se proporciona \"tal cual\" y \"según disponibilidad\", sin garantías de ningún tipo, ya sean expresas o implícitas, incluyendo garantías implícitas de comerciabilidad, idoneidad para un propósito particular y no infracción. No garantizamos que el Servicio sea ininterrumpido, seguro o libre de errores, ni que las fotos subidas nunca se pierdan, dañen o retrasen."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "10. Limitación de responsabilidad",
+        "paragraphs": [
+          "En la máxima medida permitida por la ley, PhotosEvents no será responsable de daños indirectos, incidentales, especiales, consecuentes o punitivos, ni de la pérdida de datos, fotos, ingresos o ganancias derivados del uso del Servicio. Nuestra responsabilidad total por cualquier reclamo relacionado con el Servicio no excederá el monto que nos hayas pagado, en su caso, en los 12 meses previos al reclamo."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "11. Privacidad",
+        "paragraphs": [
+          "Nuestra Política de privacidad explica cómo recopilamos, usamos y protegemos la información, incluidas las fotos y los datos de la cuenta, y forma parte de estos Términos."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "12. Cambios a estos Términos",
+        "paragraphs": [
+          "Podemos actualizar estos Términos de vez en cuando. Si realizamos cambios importantes, actualizaremos la fecha de \"Última actualización\" indicada arriba y, cuando corresponda, proporcionaremos un aviso adicional. Continuar usando el Servicio después de que los cambios entren en vigor implica que aceptas los Términos actualizados."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "13. Ley aplicable",
+        "paragraphs": [
+          "Estos Términos se rigen por las leyes del Estado de Arizona, EE. UU., sin dar efecto a sus principios de conflicto de leyes, salvo que la ley aplicable exija lo contrario."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "14. Contáctanos",
+        "paragraphs": [
+          "¿Preguntas sobre estos Términos? Contáctanos en support@photosevents.com."
+        ],
+        "list": [],
+        "afterList": []
+      }
+    ],
+    "viewOther": "Ver nuestra Política de privacidad",
+    "viewOtherHref": "privacy"
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "lastUpdated": "Última actualización: 28 de julio de 2026",
+    "backHome": "← Volver al inicio",
+    "intro": "Esta Política de privacidad explica cómo PhotosEvents (\"PhotosEvents\", \"nosotros\" o \"nuestro\") recopila, usa, comparte y protege la información cuando usas nuestro sitio web, creas un evento o subes una foto a través de nuestras herramientas de subida por código QR (en conjunto, el \"Servicio\"). Al usar el Servicio, aceptas las prácticas descritas en esta Política de privacidad y en nuestros Términos y condiciones.",
+    "sections": [
+      {
+        "heading": "1. Información que recopilamos",
+        "paragraphs": ["Recopilamos las siguientes categorías de información:"],
+        "list": [
+          "Información de la cuenta: dirección de correo electrónico, contraseña (almacenada como un hash seguro, nunca en texto plano), nombre e imagen de perfil si los proporcionas, y tu idioma preferido",
+          "Información del evento: nombres de eventos, enlaces/códigos QR únicos y número de escaneos",
+          "Fotos subidas: archivos de imagen, nombres de archivo originales, tamaño, tipo de archivo y fecha de subida — tanto de los Organizadores como de sus invitados",
+          "Información de pago: al suscribirte a un plan pago, el pago es procesado por Stripe. Recibimos un ID de cliente de Stripe y el estado de la suscripción, pero nunca recibimos ni almacenamos el número completo de tu tarjeta",
+          "Información técnica: tu dirección IP y metadatos básicos de la solicitud, usados brevemente para aplicar límites de frecuencia y prevenir abusos",
+          "Cookies: usamos una cookie de sesión para mantener tu sesión iniciada en tu cuenta de Organizador"
+        ],
+        "afterList": []
+      },
+      {
+        "heading": "2. Cómo usamos la información",
+        "paragraphs": ["Usamos la información que recopilamos para:"],
+        "list": [
+          "Proveer, operar y mantener el Servicio (por ejemplo, generar códigos QR, almacenar y mostrar fotos, y enviar correos de notificación de subidas)",
+          "Procesar pagos y administrar suscripciones a través de Stripe",
+          "Comunicarnos contigo sobre tu cuenta, tus eventos o asuntos transaccionales",
+          "Detectar, prevenir y abordar fraudes, abusos o problemas de seguridad",
+          "Cumplir con obligaciones legales"
+        ],
+        "afterList": ["No vendemos tu información personal ni tus fotos, y no usamos tus fotos con fines publicitarios."]
+      },
+      {
+        "heading": "3. Subidas de invitados y fotos de terceros",
+        "paragraphs": [
+          "Los invitados pueden subir fotos a un evento sin crear una cuenta, lo que significa que las fotos pueden mostrar a personas que nunca interactuaron directamente con PhotosEvents. Los Organizadores del evento son responsables de informar a sus invitados cómo se recopilarán y usarán las fotos, y de obtener el consentimiento requerido por la ley aplicable — por ejemplo, antes de compartir el código QR de un evento en una reunión que pueda incluir fotos de niños.",
+          "Si apareces en una foto subida a un evento y deseas que sea eliminada, contacta directamente al Organizador del evento, o contáctanos en support@photosevents.com y te ayudaremos en la medida de lo posible."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "4. Cómo compartimos la información",
+        "paragraphs": ["Compartimos información con los proveedores de servicios que nos ayudan a operar PhotosEvents, incluyendo:"],
+        "list": [
+          "Stripe — procesamiento de pagos y facturación de suscripciones",
+          "Cloudflare R2 — almacenamiento de fotos subidas",
+          "Resend — envío de correos transaccionales (notificaciones de subida, restablecimiento de contraseña, enlaces mágicos)",
+          "Upstash — datos temporales de límite de frecuencia usados para prevenir abusos",
+          "Vercel — alojamiento de la aplicación"
+        ],
+        "afterList": ["Estos proveedores solo pueden usar tu información para prestarnos sus servicios. No vendemos tu información a terceros ni la compartimos con fines publicitarios de terceros."]
+      },
+      {
+        "heading": "5. Retención de datos",
+        "paragraphs": [
+          "Las fotos subidas a un evento del plan Gratis se eliminan automática y permanentemente aproximadamente 1 año después de subirse. Las fotos de un Organizador en el plan Pro se conservan mientras el plan Pro permanezca activo; si la cuenta se degrada o cancela, se aplican en adelante los plazos de retención del plan Gratis.",
+          "La información de la cuenta se conserva mientras tu cuenta esté activa. Puedes solicitar la eliminación de tu cuenta y de los datos asociados en cualquier momento contactándonos."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "6. Seguridad de los datos",
+        "paragraphs": [
+          "Usamos medidas administrativas, técnicas y físicas razonables para proteger tu información, incluyendo contraseñas cifradas (hash) y almacenamiento en la nube con acceso controlado. Ningún método de transmisión o almacenamiento es 100% seguro, y no podemos garantizar una seguridad absoluta."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "7. Tus derechos y opciones",
+        "paragraphs": [
+          "Dependiendo de dónde vivas, es posible que tengas derecho a acceder, corregir, eliminar o recibir una copia de la información personal que tenemos sobre ti, y a oponerte o restringir cierto procesamiento. Para ejercer estos derechos, contáctanos en support@photosevents.com. Responderemos en un plazo razonable y podríamos necesitar verificar tu identidad antes de atender tu solicitud.",
+          "Los Organizadores pueden eliminar un evento y sus fotos en cualquier momento desde su panel."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "8. Privacidad de menores",
+        "paragraphs": [
+          "El Servicio no está dirigido a menores, y no recopilamos a sabiendas información de cuenta de personas menores de 18 años. Debido a que los invitados pueden subir fotos sin crear una cuenta — incluso en eventos como fiestas de cumpleaños o baby showers — un padre, madre, tutor u otro invitado adulto podría subir fotos de niños. Es responsabilidad del Organizador del evento asegurarse de obtener el consentimiento adecuado antes de recopilar fotos de menores. Si crees que se subió la foto de un menor sin el consentimiento adecuado, contáctanos en support@photosevents.com y trabajaremos con el Organizador para eliminarla."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "9. Cookies",
+        "paragraphs": [
+          "Usamos una pequeña cantidad de cookies esenciales, principalmente para mantener tu sesión iniciada en tu cuenta de Organizador. No usamos cookies de publicidad ni de análisis de terceros."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "10. Usuarios internacionales",
+        "paragraphs": [
+          "Nuestro Servicio está alojado en Estados Unidos, y la información que proporciones — incluidas las fotos — puede procesarse y almacenarse en Estados Unidos. Al usar el Servicio, consientes esta transferencia y procesamiento."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "11. Cambios a esta política",
+        "paragraphs": [
+          "Podemos actualizar esta Política de privacidad de vez en cuando. Si realizamos cambios importantes, actualizaremos la fecha de \"Última actualización\" indicada arriba. Continuar usando el Servicio después de que los cambios entren en vigor implica que aceptas la política actualizada."
+        ],
+        "list": [],
+        "afterList": []
+      },
+      {
+        "heading": "12. Contáctanos",
+        "paragraphs": [
+          "¿Preguntas sobre esta Política de privacidad o sobre tu información? Contáctanos en support@photosevents.com."
+        ],
+        "list": [],
+        "afterList": []
+      }
+    ],
+    "viewOther": "Ver nuestros Términos y condiciones",
+    "viewOtherHref": "terms"
   }
 }
