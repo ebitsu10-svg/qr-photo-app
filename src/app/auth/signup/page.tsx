@@ -26,6 +26,7 @@ export default async function SignUpPage({
     if (error === "exists") return "An account with that email already exists. Please sign in.";
     if (error === "mismatch") return "Passwords do not match.";
     if (error === "short") return "Password must be at least 8 characters.";
+    if (error === "terms") return "You must agree to the Terms & Conditions to create an account.";
     return "Something went wrong. Please try again.";
   }
 
@@ -59,10 +60,12 @@ export default async function SignUpPage({
             const email = (formData.get("email") as string).toLowerCase().trim();
             const password = formData.get("password") as string;
             const confirm = formData.get("confirm") as string;
+            const agreeToTerms = formData.get("agreeToTerms") === "on";
             const callbackUrl = (formData.get("callbackUrl") as string) || "/dashboard";
 
             const base = `/auth/signup${callbackUrl !== "/dashboard" ? `?callbackUrl=${encodeURIComponent(callbackUrl)}&` : "?"}error=`;
 
+            if (!agreeToTerms) redirect(base + "terms");
             if (password.length < 8) redirect(base + "short");
             if (password !== confirm) redirect(base + "mismatch");
 
@@ -135,6 +138,26 @@ export default async function SignUpPage({
             />
           </div>
 
+          <div className="flex items-start gap-2">
+            <input
+              id="agreeToTerms"
+              name="agreeToTerms"
+              type="checkbox"
+              required
+              className="mt-0.5 h-4 w-4 rounded border-zinc-300 text-black focus:ring-black dark:border-zinc-700 dark:bg-zinc-900 dark:focus:ring-white"
+            />
+            <label htmlFor="agreeToTerms" className="text-xs text-zinc-500">
+              I agree to the{" "}
+              <Link
+                href="/terms"
+                className="underline underline-offset-2 hover:text-zinc-600 dark:hover:text-zinc-300"
+              >
+                Terms & Conditions
+              </Link>
+              .
+            </label>
+          </div>
+
           <button
             type="submit"
             className="w-full rounded-lg bg-black px-4 py-2.5 text-sm font-semibold text-white hover:bg-zinc-800 transition-colors dark:bg-white dark:text-black dark:hover:bg-zinc-100"
@@ -142,17 +165,6 @@ export default async function SignUpPage({
             Create account
           </button>
         </form>
-
-        <p className="text-center text-xs text-zinc-400">
-          By creating an account, you agree to our{" "}
-          <Link
-            href="/terms"
-            className="underline underline-offset-2 hover:text-zinc-600 dark:hover:text-zinc-300"
-          >
-            Terms & Conditions
-          </Link>
-          .
-        </p>
 
         <p className="text-center text-sm text-zinc-500">
           Already have an account?{" "}

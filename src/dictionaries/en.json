@@ -97,9 +97,10 @@
     "errorExists": "An account with that email already exists. Please sign in.",
     "errorMismatch": "Passwords do not match.",
     "errorShort": "Password must be at least 8 characters.",
+    "errorTerms": "You must agree to the Terms & Conditions to create an account.",
     "forgotPassword": "Forgot password?",
     "resetSuccess": "Password updated. You can now sign in with your new password.",
-    "agreeToTermsPrefix": "By creating an account, you agree to our",
+    "agreeToTermsPrefix": "I agree to the",
     "agreeToTermsLink": "Terms & Conditions"
   },
   "dashboard": {

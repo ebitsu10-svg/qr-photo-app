@@ -36,6 +36,7 @@ export default async function SignUpPage({
     if (error === "exists") return d.errorExists;
     if (error === "mismatch") return d.errorMismatch;
     if (error === "short") return d.errorShort;
+    if (error === "terms") return d.errorTerms;
     return d.errorDefault;
   }
   const errMsg = errorMessage(sp.error);
@@ -63,11 +64,13 @@ export default async function SignUpPage({
             const email = (formData.get("email") as string).toLowerCase().trim();
             const password = formData.get("password") as string;
             const confirm = formData.get("confirm") as string;
+            const agreeToTerms = formData.get("agreeToTerms") === "on";
             const callbackUrl = (formData.get("callbackUrl") as string) || `/${lang}/dashboard`;
             const locale = (formData.get("locale") as string) || "en";
 
             const base = `/${locale}/auth/signup?callbackUrl=${encodeURIComponent(callbackUrl)}&error=`;
 
+            if (!agreeToTerms) redirect(base + "terms");
             if (password.length < 8) redirect(base + "short");
             if (password !== confirm) redirect(base + "mismatch");
 
@@ -111,22 +114,31 @@ export default async function SignUpPage({
               className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm placeholder-zinc-400 focus:border-black focus:outline-none focus:ring-1 focus:ring-black dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-white dark:focus:ring-white"
             />
           </div>
+          <div className="flex items-start gap-2">
+            <input
+              id="agreeToTerms"
+              name="agreeToTerms"
+              type="checkbox"
+              required
+              className="mt-0.5 h-4 w-4 rounded border-zinc-300 text-black focus:ring-black dark:border-zinc-700 dark:bg-zinc-900 dark:focus:ring-white"
+            />
+            <label htmlFor="agreeToTerms" className="text-xs text-zinc-500">
+              {d.agreeToTermsPrefix}{" "}
+              <Link
+                href={`/${lang}/terms`}
+                className="underline underline-offset-2 hover:text-zinc-600 dark:hover:text-zinc-300"
+              >
+                {d.agreeToTermsLink}
+              </Link>
+              .
+            </label>
+          </div>
+
           <button type="submit"
             className="w-full rounded-lg bg-black px-4 py-2.5 text-sm font-semibold text-white hover:bg-zinc-800 transition-colors dark:bg-white dark:text-black dark:hover:bg-zinc-100">
             {d.createAccountButton}
           </button>
         </form>
-
-        <p className="text-center text-xs text-zinc-400">
-          {d.agreeToTermsPrefix}{" "}
-          <Link
-            href={`/${lang}/terms`}
-            className="underline underline-offset-2 hover:text-zinc-600 dark:hover:text-zinc-300"
-          >
-            {d.agreeToTermsLink}
-          </Link>
-          .
-        </p>
 
         <p className="text-center text-sm text-zinc-500">
           {d.alreadyHaveAccount}{" "}

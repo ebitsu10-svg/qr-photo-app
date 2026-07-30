@@ -97,9 +97,10 @@
     "errorExists": "Ya existe una cuenta con ese correo. Por favor inicia sesión.",
     "errorMismatch": "Las contraseñas no coinciden.",
     "errorShort": "La contraseña debe tener al menos 8 caracteres.",
+    "errorTerms": "Debes aceptar los Términos y condiciones para crear una cuenta.",
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "resetSuccess": "Contraseña actualizada. Ya puedes iniciar sesión con tu nueva contraseña.",
-    "agreeToTermsPrefix": "Al crear una cuenta, aceptas nuestros",
+    "agreeToTermsPrefix": "Acepto los",
     "agreeToTermsLink": "Términos y condiciones"
   },
   "dashboard": {
