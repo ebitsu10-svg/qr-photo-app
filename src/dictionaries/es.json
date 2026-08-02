@@ -112,6 +112,7 @@
     "active": "Activo",
     "inactive": "Inactivo",
     "upgradeLabel": "Gratis · Mejorar",
+    "manageSubscription": "Gestionar suscripción",
     "event": "evento",
     "events": "eventos",
     "photo": "foto",
@@ -324,7 +325,9 @@
     "sections": [
       {
         "heading": "1. Información que recopilamos",
-        "paragraphs": ["Recopilamos las siguientes categorías de información:"],
+        "paragraphs": [
+          "Recopilamos las siguientes categorías de información:"
+        ],
         "list": [
           "Información de la cuenta: dirección de correo electrónico, contraseña (almacenada como un hash seguro, nunca en texto plano), nombre e imagen de perfil si los proporcionas, y tu idioma preferido",
           "Información del evento: nombres de eventos, enlaces/códigos QR únicos y número de escaneos",
@@ -337,7 +340,9 @@
       },
       {
         "heading": "2. Cómo usamos la información",
-        "paragraphs": ["Usamos la información que recopilamos para:"],
+        "paragraphs": [
+          "Usamos la información que recopilamos para:"
+        ],
         "list": [
           "Proveer, operar y mantener el Servicio (por ejemplo, generar códigos QR, almacenar y mostrar fotos, y enviar correos de notificación de subidas)",
           "Procesar pagos y administrar suscripciones a través de Stripe",
@@ -345,7 +350,9 @@
           "Detectar, prevenir y abordar fraudes, abusos o problemas de seguridad",
           "Cumplir con obligaciones legales"
         ],
-        "afterList": ["No vendemos tu información personal ni tus fotos, y no usamos tus fotos con fines publicitarios."]
+        "afterList": [
+          "No vendemos tu información personal ni tus fotos, y no usamos tus fotos con fines publicitarios."
+        ]
       },
       {
         "heading": "3. Subidas de invitados y fotos de terceros",
@@ -358,7 +365,9 @@
       },
       {
         "heading": "4. Cómo compartimos la información",
-        "paragraphs": ["Compartimos información con los proveedores de servicios que nos ayudan a operar PhotosEvents, incluyendo:"],
+        "paragraphs": [
+          "Compartimos información con los proveedores de servicios que nos ayudan a operar PhotosEvents, incluyendo:"
+        ],
         "list": [
           "Stripe — procesamiento de pagos y facturación de suscripciones",
           "Cloudflare R2 — almacenamiento de fotos subidas",
@@ -366,7 +375,9 @@
           "Upstash — datos temporales de límite de frecuencia usados para prevenir abusos",
           "Vercel — alojamiento de la aplicación"
         ],
-        "afterList": ["Estos proveedores solo pueden usar tu información para prestarnos sus servicios. No vendemos tu información a terceros ni la compartimos con fines publicitarios de terceros."]
+        "afterList": [
+          "Estos proveedores solo pueden usar tu información para prestarnos sus servicios. No vendemos tu información a terceros ni la compartimos con fines publicitarios de terceros."
+        ]
       },
       {
         "heading": "5. Retención de datos",
@@ -437,5 +448,50 @@
     ],
     "viewOther": "Ver nuestros Términos y condiciones",
     "viewOtherHref": "terms"
+  },
+  "weddingLanding": {
+    "badge": "Para novios y anfitriones",
+    "heroTitle": "Las fotos de boda de todos tus invitados. No solo las de tu fotógrafo.",
+    "heroSubtitle": "Los invitados escanean un código QR y suben sus fotos directo desde el teléfono — sin app, sin cuenta. Cada momento espontáneo queda guardado en un solo lugar, automáticamente.",
+    "cta": "Obtén tu código QR gratis →",
+    "trustLine": "Gratis para tu primer evento · Sin app para invitados · Sin tarjeta de crédito",
+    "valueProps": [
+      {
+        "emoji": "📸",
+        "title": "Captura cada momento espontáneo",
+        "body": "Tus invitados capturan momentos que tu fotógrafo no puede cubrir solo."
+      },
+      {
+        "emoji": "📱",
+        "title": "Cero fricción para los invitados",
+        "body": "Escanean el código QR y suben fotos desde su galería. Sin app, sin registro."
+      },
+      {
+        "emoji": "🗓️",
+        "title": "Todo un año para recolectarlas",
+        "body": "Los invitados siguen subiendo fotos días después de la boda — tú conservas cada foto durante un año."
+      }
+    ],
+    "howItWorksTitle": "Configúralo en minutos",
+    "steps": [
+      {
+        "title": "Crea el evento de tu boda",
+        "body": "Dale un nombre y generaremos un enlace y código QR único al instante."
+      },
+      {
+        "title": "Colócalo en tu letrero de bienvenida o en las mesas",
+        "body": "Imprime el código QR donde tus invitados puedan verlo."
+      },
+      {
+        "title": "Mira cómo llegan las fotos de tus invitados",
+        "body": "Los invitados no necesitan app ni cuenta. Tú ves todo en tu panel."
+      }
+    ],
+    "pricingTitle": "Empieza gratis. Mejora si necesitas más.",
+    "pricingSubtitle": "Tu primer evento es gratis — incluye 50 fotos. Actualiza a Pro para fotos ilimitadas de invitados, desde $50/año.",
+    "pricingCta": "Empieza gratis →",
+    "footerCopyright": "© 2026 PhotosEvents. Todos los derechos reservados.",
+    "footerTerms": "Términos y Condiciones",
+    "footerPrivacy": "Política de Privacidad"
   }
 }

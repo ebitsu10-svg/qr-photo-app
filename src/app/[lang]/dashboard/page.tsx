@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale } from "../dictionaries";
+import { ManageSubscriptionButton } from "@/components/ManageSubscriptionButton";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "My Events" };
@@ -43,7 +44,14 @@ export default async function DashboardPage({
                 : `${events.length} ${events.length === 1 ? d.event : d.events}`}
             </p>
             {isPro ? (
-              <span className="rounded-full bg-black px-2 py-0.5 text-xs font-semibold text-white dark:bg-white dark:text-black">Pro</span>
+              <>
+                <span className="rounded-full bg-black px-2 py-0.5 text-xs font-semibold text-white dark:bg-white dark:text-black">Pro</span>
+                <ManageSubscriptionButton
+                  label={d.manageSubscription}
+                  loadingLabel={d.redirecting}
+                  returnPath={`/${lang}/dashboard`}
+                />
+              </>
             ) : (
               <Link href={`/${lang}/dashboard/upgrade`}
                 className="rounded-full border border-amber-400 px-2 py-0.5 text-xs font-semibold text-amber-600 hover:bg-amber-50 transition-colors dark:text-amber-400">

@@ -1,6 +1,7 @@
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import Link from "next/link";
+import { ManageSubscriptionButton } from "@/components/ManageSubscriptionButton";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "My Events" };
@@ -33,7 +34,14 @@ export default async function DashboardPage() {
                 : `${events.length} event${events.length !== 1 ? "s" : ""}`}
             </p>
             {isPro ? (
-              <span className="rounded-full bg-black px-2 py-0.5 text-xs font-semibold text-white dark:bg-white dark:text-black">Pro</span>
+              <>
+                <span className="rounded-full bg-black px-2 py-0.5 text-xs font-semibold text-white dark:bg-white dark:text-black">Pro</span>
+                <ManageSubscriptionButton
+                  label="Manage subscription"
+                  loadingLabel="Redirecting…"
+                  returnPath="/dashboard"
+                />
+              </>
             ) : (
               <Link href="/dashboard/upgrade" className="rounded-full border border-amber-400 px-2 py-0.5 text-xs font-semibold text-amber-600 hover:bg-amber-50 transition-colors dark:text-amber-400">
                 Free · Upgrade

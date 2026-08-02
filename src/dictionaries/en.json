@@ -112,6 +112,7 @@
     "active": "Active",
     "inactive": "Inactive",
     "upgradeLabel": "Free · Upgrade",
+    "manageSubscription": "Manage subscription",
     "event": "event",
     "events": "events",
     "photo": "photo",
@@ -324,7 +325,9 @@
     "sections": [
       {
         "heading": "1. Information We Collect",
-        "paragraphs": ["We collect the following categories of information:"],
+        "paragraphs": [
+          "We collect the following categories of information:"
+        ],
         "list": [
           "Account information: email address, password (stored as a secure hash, never in plain text), display name and profile image if provided, and your preferred language",
           "Event information: event names, unique links/QR codes, and scan counts",
@@ -337,7 +340,9 @@
       },
       {
         "heading": "2. How We Use Information",
-        "paragraphs": ["We use the information we collect to:"],
+        "paragraphs": [
+          "We use the information we collect to:"
+        ],
         "list": [
           "Provide, operate, and maintain the Service (for example, generating QR codes, storing and displaying photos, and sending upload notification emails)",
           "Process payments and manage subscriptions through Stripe",
@@ -345,7 +350,9 @@
           "Detect, prevent, and address fraud, abuse, or security issues",
           "Comply with legal obligations"
         ],
-        "afterList": ["We do not sell your personal information or your photos, and we do not use your photos for advertising."]
+        "afterList": [
+          "We do not sell your personal information or your photos, and we do not use your photos for advertising."
+        ]
       },
       {
         "heading": "3. Guest Uploads and Photos of Others",
@@ -358,7 +365,9 @@
       },
       {
         "heading": "4. How We Share Information",
-        "paragraphs": ["We share information with the service providers who help us run PhotosEvents, including:"],
+        "paragraphs": [
+          "We share information with the service providers who help us run PhotosEvents, including:"
+        ],
         "list": [
           "Stripe — payment processing and subscription billing",
           "Cloudflare R2 — storage of uploaded photos",
@@ -366,7 +375,9 @@
           "Upstash — temporary rate-limiting data used to prevent abuse",
           "Vercel — application hosting"
         ],
-        "afterList": ["These providers are only permitted to use your information to perform services on our behalf. We do not sell your information to third parties or share it for third-party advertising."]
+        "afterList": [
+          "These providers are only permitted to use your information to perform services on our behalf. We do not sell your information to third parties or share it for third-party advertising."
+        ]
       },
       {
         "heading": "5. Data Retention",
@@ -437,5 +448,50 @@
     ],
     "viewOther": "View our Terms & Conditions",
     "viewOtherHref": "terms"
+  },
+  "weddingLanding": {
+    "badge": "For wedding hosts",
+    "heroTitle": "Every guest's wedding photos. Not just your photographer's.",
+    "heroSubtitle": "Guests scan one QR code and upload straight from their phone — no app, no account. Every candid moment lands in one place, automatically.",
+    "cta": "Get your free QR code →",
+    "trustLine": "Free for your first event · No app for guests · No credit card required",
+    "valueProps": [
+      {
+        "emoji": "📸",
+        "title": "Catch every candid",
+        "body": "Guests capture moments your photographer can't be everywhere for."
+      },
+      {
+        "emoji": "📱",
+        "title": "Zero friction for guests",
+        "body": "Scan the QR code, upload from their camera roll. No app, no sign-up."
+      },
+      {
+        "emoji": "🗓️",
+        "title": "A full year to collect",
+        "body": "Guests keep uploading for days after the wedding — you keep every photo for a year."
+      }
+    ],
+    "howItWorksTitle": "Set up in minutes",
+    "steps": [
+      {
+        "title": "Create your wedding event",
+        "body": "Name it and we'll generate a unique link and QR code instantly."
+      },
+      {
+        "title": "Add it to your welcome sign or table cards",
+        "body": "Print the QR code anywhere guests will see it."
+      },
+      {
+        "title": "Watch every guest's photos roll in",
+        "body": "No app or account needed for guests. You see everything in your dashboard."
+      }
+    ],
+    "pricingTitle": "Start free. Upgrade if you need more.",
+    "pricingSubtitle": "Your first event is free — 50 photos included. Upgrade to Pro for unlimited guest photos, from $50/year.",
+    "pricingCta": "Get started free →",
+    "footerCopyright": "© 2026 PhotosEvents. All rights reserved.",
+    "footerTerms": "Terms & Conditions",
+    "footerPrivacy": "Privacy Policy"
   }
 }
